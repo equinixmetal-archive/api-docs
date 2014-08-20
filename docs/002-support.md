@@ -11,7 +11,7 @@ Returns a list of all tickets that the current user can access.
 
     + Headers
 
-            Link: https://api.packethost.net/tickets?offset=0&limit=3; rel="previous", https://api.packethost.net/tickets?offset=5&limit=3; rel="next"
+            Link: https://api.packethost.net/tickets?page=1&per_page=3; rel="previous", https://api.packethost.net/tickets?page=3&per_page=3; rel="next"
 
     + Body
 
@@ -23,10 +23,10 @@ Returns a list of all tickets that the current user can access.
                 ],
                 "meta": {
                     "total": 300,
-                    "offset": 2,
-                    "limit": 3,
-                    "previous": "https://api.packethost.net/tickets?offset=0&limit=3"
-                    "next": "https://api.packethost.net/tickets?offset=5&limit=3"
+                    "page": 2,
+                    "per_page": 3,
+                    "previous": "https://api.packethost.net/tickets?page=1&per_page=3"
+                    "next": "https://api.packethost.net/tickets?page=3&per_page=3"
                 }
             }
 
