@@ -1,2 +1,4 @@
 /node_modules
-/web
+/web/index.html
+
+!.gitkeep

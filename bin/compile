@@ -22,8 +22,7 @@ for file in `find "$DIR/docs" -type f -name "*.md"`; do
   cat $file >> "$DIR/build.md"
 done
 
-rm -rf "$DIR/web"
-mkdir "$DIR/web"
+rm -rf "$DIR/web/index.html"
 $(npm bin)/aglio -t flatly-multi -i "$DIR/build.md" -o "$DIR/web/index.html"
 rm -rf "$DIR/build.md"
 
