@@ -24,7 +24,7 @@ done
 
 rm -rf "$DIR/web"
 mkdir "$DIR/web"
-$(npm bin)/aglio -t default-multi -i "$DIR/build.md" -o "$DIR/web/index.html"
+$(npm bin)/aglio --no-condense -t flatly-multi -i "$DIR/build.md" -o "$DIR/web/index.html"
 rm -rf "$DIR/build.md"
 
 # Finally, go back to where the user started.
