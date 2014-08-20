@@ -11,6 +11,8 @@ Dependencies
 Usage
 -----
 
+**tl;dr:** Run `bin/compile`
+
 Our API docs use the [API Blueprint][1] specification. For a good example of
 how to use that, see [their examples][2].
 
@@ -23,10 +25,11 @@ all of these files will be combined alphabetically (hence the `00#-` naming
 scheme).
 
 To compile the documentation, run the `bin/compile` script included in this
-repo. The script will combine all of the files in the `docs` directory, then
-use the [aglio][3] to convert the docs into a pretty static website in the `web` directory.
-You'll need to set up a webserver to properly view the generated site, with the
-docroot set to the `web` directory (Apache works fine for this).
+repo. The script will make sure dependencies are installed, combine all of the
+files in the `docs` directory, then use the [aglio][3] to convert the docs into
+a pretty static website in the `web` directory. You'll need to set up a
+webserver to properly view the generated site, with the docroot set to the
+`web` directory (Apache works fine for this).
 
 [1]: http://apiblueprint.org
 [2]: https://github.com/apiaryio/api-blueprint/tree/master/examples
