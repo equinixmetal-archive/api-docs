@@ -20,6 +20,7 @@ A single device object.
 A device has the following properties:
 
 - id
+- type
 - organization
 - created_at
 - updated_at
