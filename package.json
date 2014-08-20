@@ -1,0 +1,9 @@
+{
+  "name": "developer.packethost.net",
+  "version": "1.0.0",
+  "description": "API documentation for the Packet API",
+  "repository": "https://github.com/packethost/apidocs",
+  "dependencies": {
+    "aglio": "^1.14.0"
+  }
+}
