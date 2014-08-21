@@ -21,13 +21,11 @@ Returns a list of all tickets that the current user can access.
                     { "href": "https://api.packethost.net/tickets/7BD284B9-4954-4CE6-9C6C-40A2515CD25C" },
                     { "href": "https://api.packethost.net/tickets/E0B12951-C60F-4FFE-A30C-CC0C0FFED88A" }
                 ],
-                "meta": {
-                    "total": 300,
-                    "page": 2,
-                    "per_page": 3,
-                    "previous": "https://api.packethost.net/tickets?page=1&per_page=3"
-                    "next": "https://api.packethost.net/tickets?page=3&per_page=3"
-                }
+                "total": 300,
+                "page": 2,
+                "per_page": 3,
+                "previous": "https://api.packethost.net/tickets?page=1&per_page=3",
+                "next": "https://api.packethost.net/tickets?page=3&per_page=3"
             }
 
 ### Create a Ticket [POST]

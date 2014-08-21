@@ -59,9 +59,7 @@ Returns a list of all memberships a user can access.
                     { "href": "https://api.packethost.net/memberships/E6AA9ABD-32BA-4260-A1E8-DE660E9523E5" },
                     { "href": "https://api.packethost.net/memberships/2937D091-3EA4-4E3F-BB73-950F8CBAE03E" },
                     { "href": "https://api.packethost.net/memberships/3F11AD73-E9A8-48BA-B177-FDC66E56BEDB" }
-                ],
-                "meta": {
-                }
+                ]
             }
 
 ### Create a Membership [POST]
