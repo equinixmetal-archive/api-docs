@@ -11,7 +11,7 @@ Dependencies
 Usage
 -----
 
-**tl;dr:** Run `bin/compile`
+**tl;dr:** Run `npm install && grunt`
 
 Our API docs use the [API Blueprint][1] specification. For good examples of
 how to use that, see [their examples][2] or those of [Apiary][3].
@@ -28,11 +28,9 @@ a new file in the `docs` directory. When the documentation site is compiled,
 all of these files will be combined alphabetically (hence the `00#-` naming
 scheme).
 
-To compile the documentation, run the `bin/compile` script included in this
-repo. The script will make sure dependencies are installed, combine all of the
-files in the `docs` directory, then use the [aglio][4] to convert the docs into
-a pretty static website in the `web` directory. You'll need to set up a
-webserver to properly view the generated site, with the docroot set to the
-`web` directory (Apache works fine for this).
+To compile the documentation, run `npm install && grunt`. This will convert the
+markdown files in `docs` into a static webpage in the `web` directory, then
+start a little node.js server for you to view the site. To compile without
+starting the server, use `grunt compile`.
 
 [4]: https://github.com/danielgtaylor/aglio
