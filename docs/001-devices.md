@@ -9,27 +9,76 @@ Returns a list of the current user's devices.
 
 + Response 200
 
+    + Body
+
+            {
+                "devices": [
+                    { "href": "https://api.packethost.net/devices/7AF858CC-C4B2-465D-8DB4-D9B8F589CDD6" },
+                    { "href": "https://api.packethost.net/devices/742264CF-EA1F-4C9A-BC29-296BF60736F1" },
+                    ...
+                ]
+            }
+
 ### Create a Device [POST]
 Creates a new device and provisions it in our datacenter.
 
+Type-specific options (such as `datacenter` for `baremetal` devices) should be
+included in the main data structure alongside `type` and `subtype`.
+
++ Request
+
+    + Body
+
+            {
+                "type": "baremetal",
+                "subtype": "diablo",
+                "datacenter": "nyc",
+                "os": "ubuntu"
+            }
+
 + Response 201
+
+    + Headers
+
+            Location: https://api.packethost.net/devices/C3738E95-74A3-4C50-B93F-BEBAB47C10E0 rel="self"
+
+    + Body
+
+            {
+                "href": "https://api.packethost.net/devices/C3738E95-74A3-4C50-B93F-BEBAB47C10E0"
+            }
+
 
 ## Device [/devices/{id}]
 A single device object.
 
-A device has the following properties:
-
-- id
-- type
-- organization
-- created_at
-- updated_at
-
 + Parameters
   + id (string) ... The device ID (in the form of a UUID).
 
++ Model
+
+        {
+            "id": "33B35961-6225-417E-828A-5E56C1A22BE1",
+            "type": "baremetal",
+            "subtype": "diablo",
+            "status": "active",
+            "datacenter": "nyc",
+            "organization": {
+                "href": "https://api.packethost.net/organizations/6D148728-A60F-4789-85E7-7ADE00A73E26"
+            },
+            "created_at": "2014-04-14T02:15:15Z",
+            "created_by": {
+                "href": "https://api.packethost.net/users/861C7006-19B7-4EE2-A161-D08AD7CE26D8"
+            }
+        }
+
 ### Retrieve a Device [GET]
+Type-specific options (such as `datacenter` for `baremetal` devices) will be
+included as part of the main data structure.
+
 + Response 200
+
+    [Device][]
 
 ### Update a Device [PATCH]
 + Response 204
