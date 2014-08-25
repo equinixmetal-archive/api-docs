@@ -60,7 +60,8 @@ A single device object.
         {
             "id": "33B35961-6225-417E-828A-5E56C1A22BE1",
             "type": "baremetal",
-            "subtype": "diablo",
+            "plan": "diablo",
+            "name": "Webhead 1",
             "status": "active",
             "datacenter": "nyc",
             "organization": {
@@ -81,7 +82,22 @@ included as part of the main data structure.
     [Device][]
 
 ### Update a Device [PATCH]
+
++ Request
+
+    + Body
+
+            {
+                "plan": "yellow",
+                "name": "DB 1",
+                "organization": "7A888C68-121F-4B8D-8088-08C2D052165C"
+            }
+
 + Response 204
+
+    + Header
+
+            Location: https://api.packethost.net/devices/C3A7C743-B97D-4BF9-9810-C1ED6D9B67E5
 
 ### Delete a Device [DELETE]
 Deletes a device and de-provisions it in our datacenter.

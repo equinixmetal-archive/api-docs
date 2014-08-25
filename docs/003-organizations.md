@@ -9,37 +9,77 @@ Returns a list of all organizations that the current user belongs to.
 
 + Response 200
 
+    + Body
+
+            {
+                "organizations": [
+                    { "href": "https://api.packethost.net/organizations/91E1F149-6FBA-4E2F-B5EE-294759BC80EA" },
+                    { "href": "https://api.packethost.net/organizations/91360362-16E3-4EA2-B5B5-923FA310418B" }
+                ]
+            }
+
 ### Create an Organization [POST]
 Creates a new organization. The current user will automatically be added as the
 organization owner.
 
-An organization must have the following properties:
++ Request
 
-- name
+    + Body
+
+            {
+                "name": "Samantha's Widget Company",
+                "website": "http://samswidgets.com"
+            }
 
 + Response 201
 
+    + Headers
+
+            Location: https://api.packethost.net/organizations/6A17CC17-611A-4F12-B0C3-4B3CAF6599AD
+
+    + Body
+
+            {
+                "href": "https://api.packethost.net/organizations/6A17CC17-611A-4F12-B0C3-4B3CAF6599AD"
+            }
+
 ## Organization [/organizations/{id}]
 A single organization object. An organization is a collection of users that can
-be associated with a device.
-
-An organization has the following properties:
-
-- id
-- name
-- created_at
-- updated_at
-- members
-- memberships
+be associated with devices, tickets, and other things.
 
 + Parameters
-  + id (string) ... The organization ID (in the form of a UUID).
+    + id (string) ... The organization ID (in the form of a UUID).
 
 ### Retrieve an Organization [GET]
+
 + Response 200
 
+    + Body
+
+            {
+                "id": "E16368A9-1ECD-4397-A60A-5355CA63BEDA",
+                "owner": {
+                    "href": "https://api.packethost.net/users/641CA531-1900-461B-AF88-B01750648705"
+                },
+                "name": "Acme & Co",
+                "website": "http://acmeco.com",
+                "members": [
+                    { "href": "https://api.packethost.net/users/3D987365-E24A-48F9-875B-15919526AE5A" },
+                    { "href": "https://api.packethost.net/users/0488E769-4138-4940-9687-31D10305B685" }
+                ],
+                "memberships": [
+                    { "href": "https://api.packethost.net/memberships/3BE09DC2-5030-440B-B81A-AF7097B86F16" },
+                    { "href": "https://api.packethost.net/memberships/B2403E40-9329-436B-B782-591885451ABE" }
+                ]
+            }
+
 ### Update an Organization [PATCH]
+
 + Response 204
+
+    + Headers
+
+            Location: https://api.packethost.net/organizations/E16368A9-1ECD-4397-A60A-5355CA63BEDA
 
 ### Delete an Organization [DELETE]
 + Response 204
@@ -126,6 +166,10 @@ A single membership object.
             }
 
 + Response 204
+
+    + Headers
+
+            Location: https://api.packethost.net/memberships/EB10ED3C-6A63-454E-A227-0347ABA171EE
 
 ### Delete a Membership [DELETE]
 + Response 204
