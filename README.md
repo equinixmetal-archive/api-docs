@@ -28,8 +28,11 @@ a new file in the `docs` directory. When the documentation site is compiled,
 all of these files will be combined alphabetically (hence the `00#-` naming
 scheme).
 
+First, you'll need to install `grunt-cli` if you haven't already: `npm install
+-g grunt-cli`.
+
 To compile the documentation, run `npm install && grunt`. This will convert the
-markdown files in `docs` into a static webpage in the `web` directory, then
+markdown files in `docs` into a static webpage in the `dist` directory, then
 start a little node.js server for you to view the site. To compile without
 starting the server, use `grunt compile`.
 

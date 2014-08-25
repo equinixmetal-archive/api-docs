@@ -9,6 +9,7 @@
     "grunt-aglio": "^0.2.1"
   },
   "devDependencies": {
-    "grunt-connect": "^0.2.0"
+    "grunt-contrib-connect": "^0.2.0",
+    "grunt-contrib-watch": "^0.6.1"
   }
 }
