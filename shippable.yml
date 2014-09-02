@@ -1,6 +1,6 @@
 env:
   global:
-    - SLACK_ORG=packet PROJECT="<https://github.com/packethost/apidocs|packethost/apidocs>"
+    - SLACK_ORG=packet PROJECT=apidocs
     - secure: FZrLqA0JiUOGN6lZmeTfRv4APP6ddxkoC13zWxkZXrVE2JJF2GhSC1jF/N+YSoi1sJdLxFzOAMFBlk72o/nnvL70tIq341LHLh6A2dybWZbPviFUV84Fw0zEF0uH9omXzaByKrD4GYoXdBTa8t+Bmg9h4GHNPKB02DVCaZLNtDc9nrBNnTeQSPpC9CGEyk9hlRW6K1LkiGvzSBhT+jVvnXVRGGDhaQdI2Oa5GBo2XCrjynBSXDI9o4A2qcavba4XiwWYE9dfHzF4Rpt+x6Zi896zSOE4TgO3RBlt4DAagv/aeHQD6sZijIgVvvjNxcWQDOjEE+Py5kMCgBWQRoW1BA==
 
 language: node_js
