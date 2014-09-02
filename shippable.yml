@@ -1,7 +1,7 @@
 env:
   global:
-    - SLACK_ORG=packet PROJECT=apidocs
-    - secure: FZrLqA0JiUOGN6lZmeTfRv4APP6ddxkoC13zWxkZXrVE2JJF2GhSC1jF/N+YSoi1sJdLxFzOAMFBlk72o/nnvL70tIq341LHLh6A2dybWZbPviFUV84Fw0zEF0uH9omXzaByKrD4GYoXdBTa8t+Bmg9h4GHNPKB02DVCaZLNtDc9nrBNnTeQSPpC9CGEyk9hlRW6K1LkiGvzSBhT+jVvnXVRGGDhaQdI2Oa5GBo2XCrjynBSXDI9o4A2qcavba4XiwWYE9dfHzF4Rpt+x6Zi896zSOE4TgO3RBlt4DAagv/aeHQD6sZijIgVvvjNxcWQDOjEE+Py5kMCgBWQRoW1BA==
+    - SLACK_ORG=packet PROJECT="<https://github.com/packethost/apidocs|packethost/apidocs>"
+    - secure: LIzN+8KeZWDq4FT/YTRVXdIwVwG5Lkv0pE+qXYU9glhJRqyeKIjzgXPgyqbOobDnNI6IoEAqENatAVBRRSmJdVlLXgd47EBGeDRdtLiN0CRsh7AOPkDDaHqWgBX7cIkl3XEQXtN04eFpFpl1nLjIOpDkC+yCS4XaOk5F7mAW8C+Ldwf2nvL5zZtx6Y2/PxP3HFNhYg9QI+854Jrl7b85EiXjprS8fo5uUBqTxVLsm399B9EB5ra5+83C0GhqNYWYZuLfkh0k0XGk7v4iLJjvk7VpTImcevkaBjHvm/l/VVtELmSbq7LT7EfchwjY5bY7FphhaKEnYaWZcuoSFsZYzw==
 
 language: node_js
 
