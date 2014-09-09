@@ -12,9 +12,11 @@ There are no "public" methods in the Packet API; all API methods require
 authentication.
 
 The Packet API uses API tokens for authentication. The token should be set in
-an `Authentication` header for every request to the API.
+an `X-Auth-Token` header for every request to the API.
 
-    curl -H "Authorization: $api_token" https://api.packethost.net
+    curl -H "X-Auth-Token: $api_token" https://api.packethost.net
+
+Users may generate authentications tokens in the Packet user portal.
 
 ## Group Media Types
 
@@ -35,7 +37,12 @@ on the end of the URL to specify the media type. For example:
 If neither an `Accept` header nor an extension is provided, JSON will be
 assumed.
 
-Requests with a message-body use plain JSON or XML to set or update resource states.
+Requests that require data to be submitted to the API (`POST`, `PUT` and `PATCH`)
+may include the data in the request body or as form-encoded data.
+
+	curl -H "Content-Type: application/json" -d '{"param":"value"}' https://api.packethost.net/devices
+	# or
+	curl -d 'param=value' https://api.packethost.net/devices
 
 ## Group Common Parameters
 
@@ -57,6 +64,8 @@ returns
     }
 
 The `fields` parameter accepts a comma-separated list of fields.
+
+    /user?fields=display_name,email,created_at
 
 ### `expand`
 
@@ -102,6 +111,17 @@ will return
 
 The `expand` parameter is accepted for all `GET` requests on all resources and
 collections, and should be specified as a comma-separated list.
+
+    /user?expand=emails,organizations,memberships
+
+`expand` may be used in conjunction with the `fields` parameter, provided that
+the collection(s) you want to expand are contained in the `fields` list.
+
+	# Good :-)
+	/user?fields=display_name,organizations&expand=organizations
+
+	# Bad :-(
+	/user?fields=display_name&expand=organizations
 
 ## Group Errors
 
