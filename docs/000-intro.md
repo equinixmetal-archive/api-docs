@@ -16,7 +16,7 @@ an `X-Auth-Token` header for every request to the API.
 
     curl -H "X-Auth-Token: $api_token" https://api.packethost.net
 
-Users may generate authentications tokens in the Packet user portal.
+Users may generate authentication tokens in the Packet user portal.
 
 ## Group Media Types
 
