@@ -38,7 +38,8 @@ If neither an `Accept` header nor an extension is provided, JSON will be
 assumed.
 
 Requests that require data to be submitted to the API (`POST`, `PUT` and `PATCH`)
-may include the data in the request body or as form-encoded data.
+may include the data in the request body (if the `Content-Type` header is set to
+`application/json`) or as form-encoded data.
 
 	curl -H "Content-Type: application/json" -d '{"param":"value"}' https://api.packethost.net/devices
 	# or
