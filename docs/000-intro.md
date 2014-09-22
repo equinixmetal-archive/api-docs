@@ -20,22 +20,9 @@ Users may generate authentication tokens in the Packet user portal.
 
 ## Group Media Types
 
-The Packet API returns JSON (`application/json`) or XML (`application/xml`)
-depending on the value of the `Accept` header. Standard `Accept` header
-parsing applies. Every API call should specify an `Accept` header if
-possible.
+The Packet API supports JSON (`application/json`) only.
 
     curl -H 'Accept: application/json' https://api.packethost.net
-
-If your client does not support setting headers, you may also use an extension
-on the end of the URL to specify the media type. For example:
-
-    /organizations.json
-    # or
-    /organizations.xml
-
-If neither an `Accept` header nor an extension is provided, JSON will be
-assumed.
 
 Requests that require data to be submitted to the API (`POST`, `PUT` and `PATCH`)
 may include the data in the request body (if the `Content-Type` header is set to
@@ -49,26 +36,7 @@ may include the data in the request body (if the `Content-Type` header is set to
 
 The Packet API uses a few methods to minimize network traffic and bandwidth:
 
-### `fields`
-
-For all `GET` requests in the API, you may specify a list of fields in the
-resource that you'd like to fetch. For example, if you're only interested in
-fetching the current user's e-mail address, you can use the following URL to
-only return the data you need:
-
-    /user?fields=email
-
-returns
-
-    {
-        "email": "example@example.com"
-    }
-
-The `fields` parameter accepts a comma-separated list of fields.
-
-    /user?fields=display_name,email,created_at
-
-### `expand`
+### `include`
 
 For resources that contain collections of other resources, the Packet API will
 return links to the other resources by default.
@@ -85,9 +53,9 @@ return links to the other resources by default.
 However, if you're interested in acting on resources in the `organizations`
 collection, it doesn't make sense to make a separate API call to retrieve each
 organization. Instead, you can specify which collections you'd like to be
-included using the `expand` parameter.
+included using the `include` parameter.
 
-    /user?expand=organizations
+    /user?include=organizations
 
 will return
 
@@ -110,19 +78,14 @@ will return
         ...
     }
 
-The `expand` parameter is accepted for all `GET` requests on all resources and
+The `include` parameter is accepted for all `GET` requests on all resources and
 collections, and should be specified as a comma-separated list.
 
-    /user?expand=emails,organizations,memberships
+    /user?include=emails,organizations,memberships
 
-`expand` may be used in conjunction with the `fields` parameter, provided that
-the collection(s) you want to expand are contained in the `fields` list.
+You may also include nested associations up to 3 levels deep using dot notation:
 
-	# Good :-)
-	/user?fields=display_name,organizations&expand=organizations
-
-	# Bad :-(
-	/user?fields=display_name&expand=organizations
+	/user?include=memberships.projects
 
 ## Group Errors
 
