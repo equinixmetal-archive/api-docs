@@ -24,13 +24,11 @@ The Packet API supports JSON (`application/json`) only.
 
     curl -H 'Accept: application/json' https://api.packethost.net
 
-Requests that require data to be submitted to the API (`POST`, `PUT` and `PATCH`)
-may include the data in the request body (if the `Content-Type` header is set to
-`application/json`) or as form-encoded data.
+Requests that require data to be submitted to the API (`POST`, `PUT` and `PATCH`) may include the data in the request body (if the `Content-Type` header is set to `application/json`) or as form-encoded data.
 
-	curl -H "Content-Type: application/json" -d '{"param":"value"}' https://api.packethost.net/devices
-	# or
-	curl -d 'param=value' https://api.packethost.net/devices
+    curl -H "Content-Type: application/json" -d '{"param":"value"}' https://api.packethost.net/devices
+    # or
+    curl -d 'param=value' https://api.packethost.net/devices
 
 ## Group Common Parameters
 
@@ -38,16 +36,15 @@ The Packet API uses a few methods to minimize network traffic and bandwidth:
 
 ### `include`
 
-For resources that contain collections of other resources, the Packet API will
-return links to the other resources by default.
+For resources that contain collections of other resources, the Packet API will return links to the other resources by default.
 
     {
-        ...
-        "organizations": [
-            { 'href': 'https://api.packethost.net/organizations/3D987365-E24A-48F9-875B-15919526AE5A' },
-            { 'href': 'https://api.packethost.net/organizations/0488E769-4138-4940-9687-31D10305B685' }
-        ],
-        ...
+      ...
+      "organizations": [
+        { 'href': 'https://api.packethost.net/organizations/3D987365-E24A-48F9-875B-15919526AE5A' },
+        { 'href': 'https://api.packethost.net/organizations/0488E769-4138-4940-9687-31D10305B685' }
+      ],
+      ...
     }
 
 However, if you're interested in acting on resources in the `organizations`
@@ -60,22 +57,22 @@ included using the `include` parameter.
 will return
 
     {
-        ...
-        "organizations": [
-            {
-                "href": "https://api.packethost.net/organizations/3D987365-E24A-48F9-875B-15919526AE5A",
-                "id": "3D987365-E24A-48F9-875B-15919526AE5A",
-                "name": "My Awesome Organization",
-                ...
-            },
-            {
-                "href": "https://api.packethost.net/organizations/0488E769-4138-4940-9687-31D10305B685",
-                "id": "0488E769-4138-4940-9687-31D10305B685",
-                "name": "Another Rad Organization",
-                ...
-            }
-        ],
-        ...
+      ...
+      "organizations": [
+        {
+          "href": "https://api.packethost.net/organizations/3D987365-E24A-48F9-875B-15919526AE5A",
+          "id": "3D987365-E24A-48F9-875B-15919526AE5A",
+          "name": "My Awesome Organization",
+          ...
+        },
+        {
+          "href": "https://api.packethost.net/organizations/0488E769-4138-4940-9687-31D10305B685",
+          "id": "0488E769-4138-4940-9687-31D10305B685",
+          "name": "Another Rad Organization",
+          ...
+        }
+      ],
+      ...
     }
 
 The `include` parameter is accepted for all `GET` requests on all resources and
@@ -85,7 +82,7 @@ collections, and should be specified as a comma-separated list.
 
 You may also include nested associations up to 3 levels deep using dot notation:
 
-	/user?include=memberships.projects
+    /user?include=memberships.projects
 
 ## Group Errors
 

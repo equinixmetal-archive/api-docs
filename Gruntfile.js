@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     aglio: {
       packet: {
         files: {
-          './dist/index.html': [ './docs/*.md' ]
+          './dist/index.html': [ './docs/*.apib' ]
         },
         theme: 'flatly-multi',
         seperator: "\n"
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 
     watch: {
       docs: {
-        files: ['docs/*.md'],
+        files: ['docs/*.apib'],
         tasks: ['compile']
       }
     }
