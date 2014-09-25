@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+docs_dir="$(realpath "$(dirname "$0")/../docs")"
+
+for file in $docs_dir/*.apib; do
+  printf -v prefix_str '%03d' "$((counter++))"
+  base="${file%.*}"
+  filenameroot="${base#*-}"
+  newname="$docs_dir/$prefix_str-$filenameroot.apib"
+
+  if [ $file != $newname ]; then mv "$file" "$newname"; fi
+done
