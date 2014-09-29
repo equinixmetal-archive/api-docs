@@ -4,7 +4,7 @@ Manage your user account.
 ## Users [/users]
 
 ### Retrieve all Users [GET]
-Returns a list of users that the are accessible to the current user (all users in the current user's organizations, essentially).
+Returns a list of users that the are accessible to the current user (all users in the current user's projects, essentially).
 
 + Response 200
 
@@ -12,9 +12,9 @@ Returns a list of users that the are accessible to the current user (all users i
 
             {
               "users": [
-                { "href": "https://api.packethost.net/users/3D987365-E24A-48F9-875B-15919526AE5A" },
-                { "href": "https://api.packethost.net/users/0488E769-4138-4940-9687-31D10305B685" },
-                { "href": "https://api.packethost.net/users/B2403E40-9329-436B-B782-591885451ABE" }
+                { "href": "https://api.packethost.net/users/fbfe76e3-62b3-47a9-ae20-20dd3a943dba" },
+                { "href": "https://api.packethost.net/users/9b250695-03d1-4cc2-a8f6-a61187774b74" },
+                { "href": "https://api.packethost.net/users/dc9c92ab-b2ed-44f1-aa50-34d91b7a5e07" }
               ]
             }
 
@@ -23,18 +23,18 @@ Returns a list of users that the are accessible to the current user (all users i
   + Model
 
             {
-              "id": "333F576A-1F5F-4983-BAF1-89B0869FE704",
+              "id": "faaaec30-be0c-4b6d-b1a7-1bf6e494a333",
               "first_name": "Melissa",
               "last_name": "Smith",
               "full_name": "Melissa Smith",
               "settings": { "timezone": "America/New_York", "two_factor_auth": false },
               "social": { "twitter": "@melissasmith", "facebook": "https://facebook.com/melissa.smith", "linkedin": "melissasmith" },
               "memberships": [
-                { "href": "https://api.packethost.net/memberships/3BE09DC2-5030-440B-B81A-AF7097B86F16" },
-                { "href": "https://api.packethost.net/memberships/B2403E40-9329-436B-B782-591885451ABE" }
+                { "href": "https://api.packethost.net/memberships/ae4459fe-c0fb-472b-b76f-440e81c70666" },
+                { "href": "https://api.packethost.net/memberships/0afe1b6c-a4f6-4c70-9d71-7aa6c22d532f" }
               ],
               "ssh-keys": [
-                { "href": "https://api.packethost.net/ssh-keys/E343F687-CB0E-4EFF-A80A-73602AFAB1DF" }
+                { "href": "https://api.packethost.net/ssh-keys/03ab6462-70fc-4a0e-a5a0-28725921026f" }
               ],
               "emails": [ { "address": "melissa@example.com", "default": true }, { "address": "melissa.work@example.com", "default": false } ],
               "created_at": "2014-04-14T02:15:15Z"

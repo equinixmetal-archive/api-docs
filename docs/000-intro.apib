@@ -40,9 +40,9 @@ For resources that contain collections of other resources, the Packet API will r
 
     {
       ...
-      "organizations": [
-        { 'href': 'https://api.packethost.net/organizations/3D987365-E24A-48F9-875B-15919526AE5A' },
-        { 'href': 'https://api.packethost.net/organizations/0488E769-4138-4940-9687-31D10305B685' }
+      "projects": [
+        { "href": "https://api.packethost.net/projects/5b590e4f-be96-4400-ae32-c315ee67964d" },
+        { "href": "https://api.packethost.net/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd" }
       ],
       ...
     }
@@ -52,23 +52,23 @@ collection, it doesn't make sense to make a separate API call to retrieve each
 organization. Instead, you can specify which collections you'd like to be
 included using the `include` parameter.
 
-    /user?include=organizations
+    /user?include=projects
 
 will return
 
     {
       ...
-      "organizations": [
+      "projects": [
         {
-          "href": "https://api.packethost.net/organizations/3D987365-E24A-48F9-875B-15919526AE5A",
-          "id": "3D987365-E24A-48F9-875B-15919526AE5A",
-          "name": "My Awesome Organization",
+          "href": "https://api.packethost.net/projects/c851d3c5-d55d-4b1a-99f1-96fc64768bc3",
+          "id": "c851d3c5-d55d-4b1a-99f1-96fc64768bc3",
+          "name": "Project 1",
           ...
         },
         {
-          "href": "https://api.packethost.net/organizations/0488E769-4138-4940-9687-31D10305B685",
-          "id": "0488E769-4138-4940-9687-31D10305B685",
-          "name": "Another Rad Organization",
+          "href": "https://api.packethost.net/projects/21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2",
+          "id": "21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2",
+          "name": "Project 2",
           ...
         }
       ],
@@ -78,7 +78,7 @@ will return
 The `include` parameter is accepted for all `GET` requests on all resources and
 collections, and should be specified as a comma-separated list.
 
-    /user?include=emails,organizations,memberships
+    /user?include=emails,projects,memberships
 
 You may also include nested associations up to 3 levels deep using dot notation:
 
