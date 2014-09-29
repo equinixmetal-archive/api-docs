@@ -13,8 +13,8 @@ Returns a list of the current user's devices.
 
             {
               "devices": [
-                { "href": "https://api.packethost.net/devices/7AF858CC-C4B2-465D-8DB4-D9B8F589CDD6" },
-                { "href": "https://api.packethost.net/devices/742264CF-EA1F-4C9A-BC29-296BF60736F1" },
+                { "href": "https://api.packethost.net/devices/8f10d92c-3c0b-4df4-a9e1-c9fb8ce1a79a" },
+                { "href": "https://api.packethost.net/devices/73895ed2-d6c6-4229-bb67-ae3143d64148" },
                 ...
               ]
             }
@@ -22,7 +22,7 @@ Returns a list of the current user's devices.
 ### Create a Device [POST]
 Creates a new device and provisions it in our datacenter.
 
-Type-specific options (such as `datacenter` for `baremetal` devices) should be
+Type-specific options (such as `location` for `baremetal` devices) should be
 included in the main data structure alongside `type` and `subtype`.
 
 + Request
@@ -31,8 +31,8 @@ included in the main data structure alongside `type` and `subtype`.
 
             {
               "type": "baremetal",
-              "subtype": "diablo",
-              "datacenter": "nyc",
+              "plan": "diablo",
+              "location": "nyc",
               "os": "ubuntu"
             }
 
@@ -40,12 +40,12 @@ included in the main data structure alongside `type` and `subtype`.
 
   + Headers
 
-            Location: https://api.packethost.net/devices/C3738E95-74A3-4C50-B93F-BEBAB47C10E0 rel="self"
+            Location: https://api.packethost.net/devices/1acd244d-5abe-4992-bb63-135a032a001f rel="self"
 
   + Body
 
             {
-              "href": "https://api.packethost.net/devices/C3738E95-74A3-4C50-B93F-BEBAB47C10E0"
+              "href": "https://api.packethost.net/devices/1acd244d-5abe-4992-bb63-135a032a001f"
             }
 
 
@@ -58,19 +58,17 @@ A single device object.
 + Model
 
         {
-          "id": "33B35961-6225-417E-828A-5E56C1A22BE1",
+          "id": "c8109e92-ae6c-4134-8fd9-8d86a702e7c3",
           "type": "baremetal",
           "plan": "diablo",
           "name": "Webhead 1",
           "status": "active",
           "datacenter": "nyc",
-          "organization": {
-            "href": "https://api.packethost.net/organizations/6D148728-A60F-4789-85E7-7ADE00A73E26"
+          "project": {
+            "href": "https://api.packethost.net/projects/0a315aa2-4513-4780-9093-4d1af8400a7b"
           },
           "created_at": "2014-04-14T02:15:15Z",
-          "created_by": {
-            "href": "https://api.packethost.net/users/861C7006-19B7-4EE2-A161-D08AD7CE26D8"
-          }
+          "updated_at": "2014-04-15T02:15:15Z",
         }
 
 ### Retrieve a Device [GET]
@@ -90,14 +88,10 @@ included as part of the main data structure.
             {
               "plan": "yellow",
               "name": "DB 1",
-              "organization": "7A888C68-121F-4B8D-8088-08C2D052165C"
+              "project": "9bf1a535-1c80-4c57-8c74-5b7a5e26c99f"
             }
 
 + Response 204
-
-  + Header
-
-            Location: https://api.packethost.net/devices/C3A7C743-B97D-4BF9-9810-C1ED6D9B67E5
 
 ### Delete a Device [DELETE]
 Deletes a device and de-provisions it in our datacenter.
