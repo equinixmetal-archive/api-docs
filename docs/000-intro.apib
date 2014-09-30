@@ -9,14 +9,20 @@ organizations.
 ## Group Authentication
 
 There are no "public" methods in the Packet API; all API methods require
-authentication.
+authentication. Authenticating with the Packet API consists of two parts:
 
-The Packet API uses API tokens for authentication. The token should be set in
-an `X-Auth-Token` header for every request to the API.
+1. An application token (contained in the `X-Consumer-Token` header)
+2. A user authentication token (container in the `X-Auth-Token` header)
 
-    curl -H "X-Auth-Token: $api_token" https://api.packethost.net
+Application tokens are used to identify each application that has permission
+to connect to the Packet API. You may create new applications in the Packet
+Portal.
 
-Users may generate authentication tokens in the Packet user portal.
+Authentication tokens are used to identify the user your application is
+connecting to the Packet API on behalf of. Think of authentication tokens as
+permanent sessions&mdash;the user creates authentication tokens, and your app
+can use them to connect to the Packet API on their behalf until they delete the
+token.
 
 ## Group Media Types
 
