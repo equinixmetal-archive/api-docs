@@ -46,10 +46,16 @@ For resources that contain collections of other resources, the Packet API will r
 
     {
       ...
+      // Includes "href" links if the resource is reachable through the API.
       "projects": [
         { "href": "https://api.packethost.net/projects/5b590e4f-be96-4400-ae32-c315ee67964d" },
         { "href": "https://api.packethost.net/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd" }
       ],
+      // Includes "id" attributes if not.
+      "emails": [
+        { "id": "eb5d8c89-4d15-4c87-859c-5ae190ad5d9a" },
+        { "id": "c17f77ad-9070-4084-abaa-7538581d9523" }
+      ]
       ...
     }
 
