@@ -10,6 +10,11 @@ organizations.
 ### Retrieve all Events [GET]
 Returns a list of the current user's events.
 
+
++ Parameters
+  + since = `Time.now` (optional, string) ... Only include notifications updated since the given datetime. Must be a UTC datetime in ISO8601 format.
+
+
 + Response 200
 
   + Body
