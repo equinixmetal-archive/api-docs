@@ -1,6 +1,8 @@
 Packet API Documentation
 ========================
 
+[![Build Status](https://api.shippable.com/projects/54109fe421c97efdb898bb3c/badge?branchName=master)](https://app.shippable.com/projects/54109fe421c97efdb898bb3c/builds/latest)
+
 This is the source code for the Packet API documentation site.
 
 Dependencies
