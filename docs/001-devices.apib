@@ -1,11 +1,11 @@
 # Group Devices
 Devices are the heart of the Packet ecosystem.
 
-## Devices [/devices]
-A collection of devices that the current user can access.
+## Devices [/projects/{id}/devices]
+A collection of devices for a given project.
 
 ### Retrieve all Devices [GET]
-Returns a list of the current user's devices.
+Returns a list of the current projects's devices.
 
 + Response 200
 
@@ -22,18 +22,17 @@ Returns a list of the current user's devices.
 ### Create a Device [POST]
 Creates a new device and provisions it in our datacenter.
 
-Type-specific options (such as `location` for `baremetal` devices) should be
-included in the main data structure alongside `type` and `subtype`.
+Type-specific options (such as `operating_system` for `baremetal` devices)
+should be included in the main data structure alongside `name` and `plan`.
 
 + Request
 
   + Body
 
             {
-              "type": "baremetal",
-              "plan": "diablo",
-              "location": "nyc",
-              "os": "ubuntu"
+              "name": "My Awesome Server",
+              "plan": "baremetal_1",
+              "operating_system": "ubuntu"
             }
 
 + Response 201
@@ -59,16 +58,30 @@ A single device object.
 
         {
           "id": "c8109e92-ae6c-4134-8fd9-8d86a702e7c3",
-          "type": "baremetal",
-          "plan": "diablo",
+          "plan": {
+            "id": "d3ceef7e-e87d-44d6-a4cb-5571f4f4cd8a"
+          },
+          "billing_cycle": "daily",
           "name": "Webhead 1",
-          "status": "active",
-          "datacenter": "nyc",
+          "state": "active",
+          "tags": ["database", "app"],
+          "operating_system": {
+            "slug": "coreos_stable",
+            "name": "CoreOS (Stable)",
+            "distro": "coreos",
+            "version": "stable"
+          },
           "project": {
             "href": "https://api.packethost.net/projects/0a315aa2-4513-4780-9093-4d1af8400a7b"
           },
+          "charges": [
+            { "id": "49f28596-80c8-4aba-88f2-c873ac41dd80" },
+            { "id": "e8f50ed3-3fcb-43d8-92db-9b875eaf0a0a" },
+            { "id": "fb35fa7a-1c31-4484-ac36-a688f8e75fa2" }
+          ],
           "created_at": "2014-04-14T02:15:15Z",
           "updated_at": "2014-04-15T02:15:15Z",
+          "href": "https://api.packethost.net/devices/c8109e92-ae6c-4134-8fd9-8d86a702e7c3"
         }
 
 ### Retrieve a Device [GET]
@@ -86,9 +99,8 @@ included as part of the main data structure.
   + Body
 
             {
-              "plan": "yellow",
-              "name": "DB 1",
-              "project": "9bf1a535-1c80-4c57-8c74-5b7a5e26c99f"
+              "plan": "baremetal_2",
+              "name": "DB 1"
             }
 
 + Response 204
@@ -104,39 +116,25 @@ A collection of actions for a given device.
 + Parameters
   + id (string) ... The device ID to retrieve actions for.
 
-### Retrieve all Actions [GET]
-Returns a list of all actions for the given device.
-
-+ Response 200
-
 ### Create an Action [POST]
 Creates an action for the given device. Possible actions include:
 
-- power-off
+- power_on
+- power_off
 - reboot
+- rebuild
 
-+ Response 201
++ Request
 
-## Action [/actions/{id}]
-A single action object.
+  + Body
 
-An action has the following parameters:
+            {
+              "type": "power_on"
+            }
 
-- type
-- status
-- device
-- created_by
-- created_at
++ Response 202
 
-+ Parameters
-  + id (string) ... The action ID.
-
-### Retrieve an Action [GET]
-Returns a single action object.
-
-+ Response 200
-
-## Locations [/locations]
+## Locations [/facilities]
 Provides a listing of available datacenters where you can provision Packet devices.
 
 ### List available locations [GET]
@@ -146,18 +144,23 @@ Provides a listing of available datacenters where you can provision Packet devic
   + Body
 
             {
-              "locations": [
+              "facilities": [
                 {
-                  "slug": "jfk2",
-                  "name": "60 Hudson Street, New York, NY",
-                  "coordinates": [40.717721, -74.008676],
-                  "features": ["baremetal"]
+                  "id": "6dde1d2e-1c62-4647-b990-14d929aa1797",
+                  "name": "Parsippany, NJ",
+                  "code": "ewr1",
+                  "address": "200 Webro Road",
+                  "city": "Parsippany",
+                  "state": "NJ",
+                  "country": "United States",
+                  "coordinates": { "latitude": 40.857084, "longitude": -74.418907 },
+                  "features": [ "baremetal" ]
                 },
                 ...
               ]
             }
 
-## Operating systems [/oses, /operating-systems]
+## Operating systems [/operating-systems]
 Provides a listing of available operating systems to provision your new device with.
 
 ### List available OSes [GET]
@@ -168,8 +171,8 @@ Provides a listing of available operating systems to provision your new device w
 
             {
               "oses": [
-                { "slug": "ubuntu_14_04", "name": "Ubuntu 14.04" },
-                { "slug": "coreos_stable", "name": "CoreOS (stable)" },
+                { "slug": "ubuntu_14_04", "name": "Ubuntu 14.04", "distro": "ubuntu", "version": 14.04 },
+                { "slug": "coreos_stable", "name": "CoreOS (stable)", "distro": "coreos", "version": "stable" },
                 ...
               ]
             }
