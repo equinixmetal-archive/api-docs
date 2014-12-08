@@ -1,0 +1,86 @@
+# Group Users
+Most user-related methods are part of the public API, but there are a few that 
+we have restricted to the private API for security and/or workflow reasons.
+
+## Users [/users]
+
+### Create a new User [POST]
+Creates a new user account. This is, notably, one of the few methods in the 
+API that does not require a `X-Auth-Token` header, since we are creating an 
+account for a user that doesn't exist yet.
+
+You may also notice the `staff` and `otp_uri` attributes included in the 
+response. These attributes are included in all representations of a user when 
+the consumer is an internal Packet app.
+
++ Request
+
+  + Body
+
+            {
+              "first_name": "Brian",
+              "last_name": "Michaelson",
+              "emails": { "address": "brian@example.com" },
+              "password": "my_password"
+            }
+
++ Response 201
+
+  + Headers
+
+            Location: https://api.packethost.net/users/418b7103-7418-4972-8ef8-b2e4944f42a8 rel="self"
+
+  + Body
+
+            {
+              "id": "418b7103-7418-4972-8ef8-b2e4944f42a8",
+              "first_name": "Brian",
+              "last_name": "Michaelson",
+              "full_name": "Brian Michaelson",
+              "email": "brian@example.com",
+              "two_factor_auth": null,
+              "timezone": "America/New_York",
+              "twitter": null,
+              "facebook": null,
+              "linkedin": null,
+              "phone_number": null,
+              "emails": [ { "href": "https://api.packethost.net/emails/7e407a6a-4f96-4da0-8c48-5665352ebf06" } ],
+              "created_at": "2014-04-14T02:15:15Z",
+              "updated_at": "2014-04-14T02:15:15Z",
+              "staff": true,
+              "otp_uri": "otpauth://totp/brian@example.com?secret=83ng383nsdfg83&issuer=Packet"
+            }
+
+
+## User [/user/{id}]
+
+### Delete a User Account [DELETE]
+Deletes a user account. If an ID is not passed, this method will delete the 
+current user.
+
++ Response 204
+
+## Resetting Passwords [/reset-password]
+If a user forgets their password, Packet apps should give them the ability to 
+log in and change it. This is done through password reset tokens that are 
+emailed to the user.
+
+### Create a Password Reset Token [POST]
+Calling this method creates a new password reset token and emails it to the 
+user. The email contains a link to a place in the Portal where the user can 
+log in once and change their password.
+
+Password reset tokens expire in 24 hours, and are only valid for a single call 
+to the API.
+
++ Request
+
+  + Body
+
+            {
+              "email": "brian@example.com"
+            }
+
++ Response 201
++ Response 404
++ Response 422

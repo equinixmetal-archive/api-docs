@@ -1,0 +1,47 @@
+# Group Sessions
+Sessions are how users log in to the Packet API. It is essentially a way of 
+generating an API token that is only valid for 2 weeks. Normal API consumers 
+will be encouraged to use actual API tokens instead of logging in with 
+sessions, but internal Packet apps should allow users to log in with sessions.
+
+## Sessions [/sessions]
+
+### Create a Session [POST]
+Creates a new session for a user.
+
++ Request
+
+  + Body
+
+            {
+              "login": "greta@example.com",
+              "password": "my_password"
+            }
+
++ Response 201
+
+  + Headers
+
+            Location: https://api.packethost.net/auth-tokens/e5283a3f-56ac-4cd3-a976-aef0e8da0fc7 rel="self"
+
+  + Body
+
+            {
+              "id": "e5283a3f-56ac-4cd3-a976-aef0e8da0fc7",
+              "token": "1203880ba5c74089e4b1be2bb86417af",
+              "expires_at": "2014-12-18T12:00:00Z",
+              "created_at": "2014-12-04T12:00:00Z",
+              "updated_at": "2014-12-04T12:00:00Z",
+              "user": {
+                "href": "https://api.packethost.net/users/e27bcf46-ca98-40cf-b449-b89cea273fc8"
+              }
+            }
+
+
+## Session [/session]
+The current session for the logged-in user.
+
+### Destroy the Current Session [DELETE]
+Invalidates the current session. This is the same as logging the user out.
+
++ Response 204
