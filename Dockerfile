@@ -15,8 +15,7 @@ RUN \
   rm /etc/nginx/sites-enabled/default && \
   ln -s /etc/nginx/sites-available/developer.packet.net /etc/nginx/sites-enabled/default && \
   npm install && \
-  grunt compile && \
-  mv dist/index.html ./ 
+  grunt compile
 
 # Define default command.
 CMD ["nginx"]
