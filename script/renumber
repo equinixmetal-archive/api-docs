@@ -2,11 +2,14 @@
 
 docs_dir="$(realpath "$(dirname "$0")/../docs")"
 
-for file in $docs_dir/*.apib; do
-  printf -v prefix_str '%03d' "$((counter++))"
-  base="${file%.*}"
-  filenameroot="${base#*-}"
-  newname="$docs_dir/$prefix_str-$filenameroot.apib"
+for docset_dir in $docs_dir/*; do
+  counter=0
+  for file in $docset_dir/*.apib; do
+    printf -v prefix_str '%03d' "$((counter++))"
+    base="${file%.*}"
+    filenameroot="${base#*-}"
+    newname="$docset_dir/$prefix_str-$filenameroot.apib"
 
-  if [ $file != $newname ]; then mv "$file" "$newname"; fi
+    if [ $file != $newname ]; then mv "$file" "$newname"; fi
+  done
 done
