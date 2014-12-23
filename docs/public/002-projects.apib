@@ -50,7 +50,32 @@ Creates a new projects and adds the current user as a member.
   + Body
 
             {
-              "href": "https://api.packethost.net/projects/9317a146-bdb8-4d73-a59e-2cca97aaabbd"
+              "id": "9317a146-bdb8-4d73-a59e-2cca97aaabbd",
+              "href": "https://api.packethost.net/projects/9317a146-bdb8-4d73-a59e-2cca97aaabbd",
+              "name": "My Project",
+              "members": [
+                { "href": "https://api.packethost.net/users/0ad30f88-b3b5-46bf-a485-8132f858f8c8" },
+                { "href": "https://api.packethost.net/users/9793d8a9-3e7e-487e-9042-78aa2f4e1d9d" },
+                ...
+              ],
+              "memberships": [
+                { "href": "https://api.packethost.net/memberships/e4db34df-bb03-43a1-bd46-3f91ade18ed4" },
+                { "href": "https://api.packethost.net/memberships/bde083f5-67b6-4593-b3ee-e63ac3d7f79a" },
+                ...
+              ],
+              "invitations": [
+                { "href": "https://api.packethost.net/invitations/9aa3bd55-5209-42b6-9ed8-ec72ba043dba" }
+              ],
+              "devices": [],
+              "payment_method": {
+                "href": "https://api.packethost.net/payment-methods/eedbb692-b217-477f-bfe5-8dd58df1cd09",
+              },
+              "credits": [],
+              "credit_total": 0,
+              "overdue": 0,
+              "default_for": "23a57279-8304-437d-9517-ebdbacf6413c",
+              "created_at": "2014-04-14T02:15:15Z",
+              "updated_at": "2014-04-28T01:18:50Z"
             }
 
 
@@ -108,7 +133,9 @@ A single project object.
               "payment_method": "511a27d6-1066-4525-9fe5-53dc3b7f2f6f"
             }
 
-+ Response 204
++ Response 200
+
+  [Project][]
 
 ### Delete a Project [DELETE]
 Deletes a device and de-provisions it in our datacenter.
