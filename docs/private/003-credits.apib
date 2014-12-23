@@ -1,0 +1,82 @@
+# Group Credits
+Packet staff can issue credits to projects that take money of the project's
+monthly balance. Credits are like gift certificates; they have an amount, and
+each month the billing system will subtract from a project's credits until the
+credit has run out before charging the user's payment method.
+
+## Credits [/projects/{id}/credits]
+
+### Create a Credit [POST]
+Creates a new credit for the given project
+
++ Request
+
+  + Body
+
+            {
+              "description": "For the downtime on 11/11/2014",
+              "amount": 20
+            }
+
++ Response 201
+
+  + Headers
+
+            Location: https://api.packethost.net/credits/7d624bbf-0070-45bc-b23d-185d580db585 rel="self"
+
+  + Body
+
+            {
+              "id": "7d624bbf-0070-45bc-b23d-185d580db585",
+              "href": "https://api.packethost.net/credits/7d624bbf-0070-45bc-b23d-185d580db585",
+              "description": "For the downtime on 11/11/2014",
+              "amount": 20,
+              "remaining": 10,
+              "project": {
+                "href": "https://api.packethost.net/projects/e27bcf46-ca98-40cf-b449-b89cea273fc8"
+              },
+              "created_at": "2014-12-04T12:00:00Z",
+              "updated_at": "2014-12-04T12:00:00Z"
+            }
+
+## Credit [/credits/{id}]
+An account credit.
+
++ Model
+
+        {
+          "id": "7d624bbf-0070-45bc-b23d-185d580db585",
+          "href": "https://api.packethost.net/credits/7d624bbf-0070-45bc-b23d-185d580db585",
+          "description": "For the downtime on 11/11/2014",
+          "amount": 20,
+          "remaining": 10,
+          "project": {
+            "href": "https://api.packethost.net/projects/e27bcf46-ca98-40cf-b449-b89cea273fc8"
+          },
+          "created_at": "2014-12-04T12:00:00Z",
+          "updated_at": "2014-12-04T12:00:00Z"
+        }
+
+### Update a Credit [PATCH]
+Update the details of an account credit.
+
++ Request
+
+  + Body
+
+            {
+              "description": "For the downtime on 11/12/2014",
+              "amount": 30
+            }
+
++ Response 200
+
+  [Credit][]
+
++ Response 422
+
+### Delete a Credit [DELETE]
+Deletes the given credit. The credit will no longer be usable after it is
+deleted.
+
++ Response 204
