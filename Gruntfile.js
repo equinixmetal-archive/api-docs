@@ -3,16 +3,9 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     aglio: {
-      'public': {
+      packet: {
         files: {
-          './dist/index.html': [ './docs/public/*.apib' ]
-        },
-        theme: 'flatly-multi',
-        seperator: "\n"
-      },
-      'private': {
-        files: {
-          './dist/private/index.html': [ './docs/private/*.apib' ]
+          './dist/index.html': [ './docs/*.apib' ]
         },
         theme: 'flatly-multi',
         seperator: "\n"
@@ -41,9 +34,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('ensure-directory', 'Creates the "dist" directory', function() {
     grunt.file.mkdir('./dist');
-    grunt.file.mkdir('./dist/private');
   });
-  grunt.registerTask('compile', ['ensure-directory', 'aglio:public', 'aglio:private']);
+  grunt.registerTask('compile', ['ensure-directory', 'aglio:packet']);
 
   grunt.registerTask('default', ['compile', 'connect:packet', 'watch']);
 };
