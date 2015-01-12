@@ -14,13 +14,13 @@ Returns a list of the current user's projects.
             {
               "projects": [
                 {
-                  "href": "https://api.packethost.net/projects/739ff9c9-0834-44c8-bba6-6a71b9a96783",
+                  "href": "https://api.packet.net/projects/739ff9c9-0834-44c8-bba6-6a71b9a96783",
                   "id": "739ff9c9-0834-44c8-bba6-6a71b9a96783",
                   "name": "A Test Project",
                   ...
                 },
                 {
-                  "href": "https://api.packethost.net/projects/74e70cdd-b51d-4d69-bf0c-ccf920643d7a",
+                  "href": "https://api.packet.net/projects/74e70cdd-b51d-4d69-bf0c-ccf920643d7a",
                   "id": "74e70cdd-b51d-4d69-bf0c-ccf920643d7a",
                   "name": "My Second Project",
                   ...
@@ -45,30 +45,30 @@ Creates a new projects and adds the current user as a member.
 
   + Headers
 
-            Location: https://api.packethost.net/projects/9317a146-bdb8-4d73-a59e-2cca97aaabbd rel="self"
+            Location: https://api.packet.net/projects/9317a146-bdb8-4d73-a59e-2cca97aaabbd rel="self"
 
   + Body
 
             {
               "id": "9317a146-bdb8-4d73-a59e-2cca97aaabbd",
-              "href": "https://api.packethost.net/projects/9317a146-bdb8-4d73-a59e-2cca97aaabbd",
+              "href": "https://api.packet.net/projects/9317a146-bdb8-4d73-a59e-2cca97aaabbd",
               "name": "My Project",
               "members": [
-                { "href": "https://api.packethost.net/users/0ad30f88-b3b5-46bf-a485-8132f858f8c8" },
-                { "href": "https://api.packethost.net/users/9793d8a9-3e7e-487e-9042-78aa2f4e1d9d" },
+                { "href": "https://api.packet.net/users/0ad30f88-b3b5-46bf-a485-8132f858f8c8" },
+                { "href": "https://api.packet.net/users/9793d8a9-3e7e-487e-9042-78aa2f4e1d9d" },
                 ...
               ],
               "memberships": [
-                { "href": "https://api.packethost.net/memberships/e4db34df-bb03-43a1-bd46-3f91ade18ed4" },
-                { "href": "https://api.packethost.net/memberships/bde083f5-67b6-4593-b3ee-e63ac3d7f79a" },
+                { "href": "https://api.packet.net/memberships/e4db34df-bb03-43a1-bd46-3f91ade18ed4" },
+                { "href": "https://api.packet.net/memberships/bde083f5-67b6-4593-b3ee-e63ac3d7f79a" },
                 ...
               ],
               "invitations": [
-                { "href": "https://api.packethost.net/invitations/9aa3bd55-5209-42b6-9ed8-ec72ba043dba" }
+                { "href": "https://api.packet.net/invitations/9aa3bd55-5209-42b6-9ed8-ec72ba043dba" }
               ],
               "devices": [],
               "payment_method": {
-                "href": "https://api.packethost.net/payment-methods/eedbb692-b217-477f-bfe5-8dd58df1cd09",
+                "href": "https://api.packet.net/payment-methods/eedbb692-b217-477f-bfe5-8dd58df1cd09",
               },
               "credits": [],
               "credit_total": 0,
@@ -89,24 +89,24 @@ A single project object.
 
         {
           "id": "75bd5fcb-dc4f-4f2b-8626-eaed6ee21ad1",
-          "href": "https://api.packethost.net/projects/75bd5fcb-dc4f-4f2b-8626-eaed6ee21ad1",
+          "href": "https://api.packet.net/projects/75bd5fcb-dc4f-4f2b-8626-eaed6ee21ad1",
           "name": "My Project",
           "members": [
-            { "href": "https://api.packethost.net/users/0ad30f88-b3b5-46bf-a485-8132f858f8c8" },
-            { "href": "https://api.packethost.net/users/9793d8a9-3e7e-487e-9042-78aa2f4e1d9d" },
+            { "href": "https://api.packet.net/users/0ad30f88-b3b5-46bf-a485-8132f858f8c8" },
+            { "href": "https://api.packet.net/users/9793d8a9-3e7e-487e-9042-78aa2f4e1d9d" },
             ...
           ],
           "memberships": [
-            { "href": "https://api.packethost.net/memberships/e4db34df-bb03-43a1-bd46-3f91ade18ed4" },
-            { "href": "https://api.packethost.net/memberships/bde083f5-67b6-4593-b3ee-e63ac3d7f79a" },
+            { "href": "https://api.packet.net/memberships/e4db34df-bb03-43a1-bd46-3f91ade18ed4" },
+            { "href": "https://api.packet.net/memberships/bde083f5-67b6-4593-b3ee-e63ac3d7f79a" },
             ...
           ],
           "invitations": [
-            { "href": "https://api.packethost.net/invitations/9aa3bd55-5209-42b6-9ed8-ec72ba043dba" }
+            { "href": "https://api.packet.net/invitations/9aa3bd55-5209-42b6-9ed8-ec72ba043dba" }
           ],
           "devices": [ ... ],
           "payment_method": {
-            "href": "https://api.packethost.net/payment-methods/27613a27-1169-49e7-aa04-6fde97702ba0"
+            "href": "https://api.packet.net/payment-methods/27613a27-1169-49e7-aa04-6fde97702ba0"
           },
           "credits": [ ... ],
           "credit_total": 100,
@@ -159,9 +159,9 @@ A membership has the following parameters:
 
     {
       "id": "7a156b4f-cefb-4b94-a295-452c9e9fdb5f",
-      "href": "https://api.packethost.net/memberships/7a156b4f-cefb-4b94-a295-452c9e9fdb5f",
-      "project": { "href": "https://api.packethost.net/projects/591144ca-d479-407a-a4bc-042cda95a1d1" },
-      "user": { "href": "https://api.packethost.net/users/2084e6f4-d7c0-4300-ab03-53830c9ddb01" },
+      "href": "https://api.packet.net/memberships/7a156b4f-cefb-4b94-a295-452c9e9fdb5f",
+      "project": { "href": "https://api.packet.net/projects/591144ca-d479-407a-a4bc-042cda95a1d1" },
+      "user": { "href": "https://api.packet.net/users/2084e6f4-d7c0-4300-ab03-53830c9ddb01" },
       "owner": true,
       "roles": [ "collaborator", "billing" ],
       "created_at": "2014-09-29T15:14:34Z",
@@ -216,12 +216,12 @@ In order to add a user to a project, they must first be invited.
 
   + Headers
 
-            Location: https://api.packethost.net/invitations/8738dd01-7246-443a-95b8-c8c493bd2c9b rel="self"
+            Location: https://api.packet.net/invitations/8738dd01-7246-443a-95b8-c8c493bd2c9b rel="self"
 
   + Body
 
             {
-              "href": "https://api.packethost.net/invitations/8738dd01-7246-443a-95b8-c8c493bd2c9b"
+              "href": "https://api.packet.net/invitations/8738dd01-7246-443a-95b8-c8c493bd2c9b"
             }
 
 ## Invitation [/invitations/{id}]
@@ -250,12 +250,12 @@ Project owners can transfer ownership of their projects to other members.
 
   + Headers
 
-            Location: https://api.packethost.net/transfers/1631425e-5a68-40c2-8075-8923ce306707 rel="self"
+            Location: https://api.packet.net/transfers/1631425e-5a68-40c2-8075-8923ce306707 rel="self"
 
   + Body
 
             {
-              "href": "https://api.packethost.net/transfers/1631425e-5a68-40c2-8075-8923ce306707"
+              "href": "https://api.packet.net/transfers/1631425e-5a68-40c2-8075-8923ce306707"
             }
 
 ## Transfer Request [/transfers/{id}]
@@ -268,9 +268,9 @@ Accept or decline a transfer request.
 
     {
       "id": "7a156b4f-cefb-4b94-a295-452c9e9fdb5f",
-      "href": "https://api.packethost.net/transfers/7a156b4f-cefb-4b94-a295-452c9e9fdb5f",
-      "project": { "href": "https://api.packethost.net/projects/591144ca-d479-407a-a4bc-042cda95a1d1" },
-      "membership": { "href": "https://api.packethost.net/memberships/2084e6f4-d7c0-4300-ab03-53830c9ddb01" },
+      "href": "https://api.packet.net/transfers/7a156b4f-cefb-4b94-a295-452c9e9fdb5f",
+      "project": { "href": "https://api.packet.net/projects/591144ca-d479-407a-a4bc-042cda95a1d1" },
+      "membership": { "href": "https://api.packet.net/memberships/2084e6f4-d7c0-4300-ab03-53830c9ddb01" },
       "created_at": "2014-09-29T15:14:34Z",
       "updated_at": "2014-10-01T09:34:12Z"
     }

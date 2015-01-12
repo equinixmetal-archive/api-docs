@@ -11,21 +11,21 @@ Returns a list of all tickets that the current user can access.
 
   + Headers
 
-            Link: https://api.packethost.net/tickets?page=1&per_page=3; rel="previous", https://api.packethost.net/tickets?page=3&per_page=3; rel="next"
+            Link: https://api.packet.net/tickets?page=1&per_page=3; rel="previous", https://api.packet.net/tickets?page=3&per_page=3; rel="next"
 
   + Body
 
             {
               "tickets": [
-                { "href": "https://api.packethost.net/tickets/d50ba7a5-4714-4c98-a637-a08235191dec" },
-                { "href": "https://api.packethost.net/tickets/93a732e1-1130-47d9-bc52-3b6e759ec6f8" },
-                { "href": "https://api.packethost.net/tickets/4df0ae8b-d710-4e3a-8cfc-0565d96cd9bd" }
+                { "href": "https://api.packet.net/tickets/d50ba7a5-4714-4c98-a637-a08235191dec" },
+                { "href": "https://api.packet.net/tickets/93a732e1-1130-47d9-bc52-3b6e759ec6f8" },
+                { "href": "https://api.packet.net/tickets/4df0ae8b-d710-4e3a-8cfc-0565d96cd9bd" }
               ],
                 "total": 300,
                 "page": 2,
                 "per_page": 3,
-                "previous": "https://api.packethost.net/tickets?page=1&per_page=3",
-                "next": "https://api.packethost.net/tickets?page=3&per_page=3"
+                "previous": "https://api.packet.net/tickets?page=1&per_page=3",
+                "next": "https://api.packet.net/tickets?page=3&per_page=3"
             }
 
 ## Ticket [/tickets/{id}]
@@ -41,7 +41,7 @@ A single support ticket object.
   + Body
 
             {
-              "href": "https://api.packethost.net/tickets/44db7032-b877-4355-802a-76a01e5f64f8",
+              "href": "https://api.packet.net/tickets/44db7032-b877-4355-802a-76a01e5f64f8",
               "id": "44db7032-b877-4355-802a-76a01e5f64f8",
               "open": true,
               "user": "test@packet.net",

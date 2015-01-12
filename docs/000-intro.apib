@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://api.packethost.net/v1
+HOST: https://api.packet.net/v1
 
 # Packet API
 
@@ -28,7 +28,7 @@ token.
 
 Generally speaking, the Packet API supports JSON (`application/json`) only.
 
-    curl -H 'Accept: application/json' https://api.packethost.net
+    curl -H 'Accept: application/json' https://api.packet.net
 
 Some routes, may support other media types where appropriate. For example, `GET /devices/:id/metadata` supports returning the device's metadata as a [cloud-init][cloud-init]-compatible YAML file:
 
@@ -38,9 +38,9 @@ Some routes, may support other media types where appropriate. For example, `GET 
 
 Requests that require data to be submitted to the API (`POST`, `PUT` and `PATCH`) may include the data in the request body (if the `Content-Type` header is set to `application/json`) or as form-encoded data.
 
-    curl -H "Content-Type: application/json" -d '{"param":"value"}' https://api.packethost.net/devices
+    curl -H "Content-Type: application/json" -d '{"param":"value"}' https://api.packet.net/devices
     # or
-    curl -d 'param=value' https://api.packethost.net/devices
+    curl -d 'param=value' https://api.packet.net/devices
 
 ## Group Common Parameters
 
@@ -54,8 +54,8 @@ For resources that contain collections of other resources, the Packet API will r
       ...
       // Includes "href" links if the resource is reachable through the API.
       "projects": [
-        { "href": "https://api.packethost.net/projects/5b590e4f-be96-4400-ae32-c315ee67964d" },
-        { "href": "https://api.packethost.net/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd" }
+        { "href": "https://api.packet.net/projects/5b590e4f-be96-4400-ae32-c315ee67964d" },
+        { "href": "https://api.packet.net/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd" }
       ],
       // Includes "id" attributes if not.
       "emails": [
@@ -78,13 +78,13 @@ will return
       ...
       "projects": [
         {
-          "href": "https://api.packethost.net/projects/c851d3c5-d55d-4b1a-99f1-96fc64768bc3",
+          "href": "https://api.packet.net/projects/c851d3c5-d55d-4b1a-99f1-96fc64768bc3",
           "id": "c851d3c5-d55d-4b1a-99f1-96fc64768bc3",
           "name": "Project 1",
           ...
         },
         {
-          "href": "https://api.packethost.net/projects/21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2",
+          "href": "https://api.packet.net/projects/21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2",
           "id": "21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2",
           "name": "Project 2",
           ...
