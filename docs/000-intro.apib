@@ -26,9 +26,15 @@ token.
 
 ## Group Media Types
 
-The Packet API supports JSON (`application/json`) only.
+Generally speaking, the Packet API supports JSON (`application/json`) only.
 
     curl -H 'Accept: application/json' https://api.packethost.net
+
+Some routes, may support other media types where appropriate. For example, `GET /devices/:id/metadata` supports returning the device's metadata as a [cloud-init][cloud-init]-compatible YAML file:
+
+    curl -H 'Accept: application/x-yaml' https://api.packet.net/devices/d402405b-d805-471d-bc16-99d6aa2e4ac3/metadata
+
+[cloud-init]: http://cloudinit.readthedocs.org/en/latest/index.html
 
 Requests that require data to be submitted to the API (`POST`, `PUT` and `PATCH`) may include the data in the request body (if the `Content-Type` header is set to `application/json`) or as form-encoded data.
 
