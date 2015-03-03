@@ -1,10 +1,20 @@
 FORMAT: 1A
-HOST: https://api.packet.net/v1
+HOST: https://api.packet.net
 
 # Packet API
 
 This is the API for Packet. Interact with your devices, user account, and
 organizations.
+
+## Group Versioning
+
+Requesting a specific version of a resource from the Packet API is done via the `Accept` header:
+
+    curl -H 'Accept: application/json; version=1'
+
+Alternatively, if your client doesn't support setting headers (or if you're quickly experimenting), you can set the API version with a parameter in the URL, though the `Accept` header is the preferred method:
+
+    curl https://api.packet.net?version=1
 
 ## Group Authentication
 
