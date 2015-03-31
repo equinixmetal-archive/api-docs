@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         files: {
           './dist/index.html': [ './docs/*.apib' ]
         },
-        theme: 'flatly-multi',
+        theme: 'templates/packet/packet-multi',
         seperator: "\n"
       }
     },
