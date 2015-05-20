@@ -23,16 +23,17 @@ Returns a list of the current projects's devices.
 Creates a new device and provisions it in our datacenter.
 
 Type-specific options (such as `operating_system` for `baremetal` devices)
-should be included in the main data structure alongside `name` and `plan`.
+should be included in the main data structure alongside `hostname` and `plan`.
 
 + Request
 
   + Body
 
             {
-              "name": "My Awesome Server",
+              "hostname": "web1.example.com",
               "plan": "baremetal_1",
-              "operating_system": "ubuntu"
+              "facility": "ewr1",
+              "operating_system": "coreos_stable"
             }
 
 + Response 201
@@ -52,7 +53,7 @@ should be included in the main data structure alongside `name` and `plan`.
 A single device object.
 
 + Parameters
-  + id (string) ... The device ID (in the form of a UUID).
+  + id (string) ... The device ID in the form of a UUID.
 
 + Model
 
@@ -62,7 +63,7 @@ A single device object.
             "id": "d3ceef7e-e87d-44d6-a4cb-5571f4f4cd8a"
           },
           "billing_cycle": "daily",
-          "name": "Webhead 1",
+          "hostname": "web1.example.com",
           "state": "active",
           "tags": ["database", "app"],
           "operating_system": {
@@ -79,18 +80,13 @@ A single device object.
           "project": {
             "href": "https://api.packet.net/projects/0a315aa2-4513-4780-9093-4d1af8400a7b"
           },
-          "charges": [
-            { "id": "49f28596-80c8-4aba-88f2-c873ac41dd80" },
-            { "id": "e8f50ed3-3fcb-43d8-92db-9b875eaf0a0a" },
-            { "id": "fb35fa7a-1c31-4484-ac36-a688f8e75fa2" }
-          ],
           "created_at": "2014-04-14T02:15:15Z",
           "updated_at": "2014-04-15T02:15:15Z",
           "href": "https://api.packet.net/devices/c8109e92-ae6c-4134-8fd9-8d86a702e7c3"
         }
 
 ### Retrieve a Device [GET]
-Type-specific options (such as `datacenter` for `baremetal` devices) will be
+Type-specific options (such as `facility` for `baremetal` devices) will be
 included as part of the main data structure.
 
 + Response 200
@@ -104,14 +100,13 @@ included as part of the main data structure.
   + Body
 
             {
-              "plan": "baremetal_2",
-              "name": "DB 1"
+              "hostname": "web2.example.com"
             }
 
 + Response 204
 
 ### Delete a Device [DELETE]
-Deletes a device and de-provisions it in our datacenter.
+Deletes a device and deprovisions it in our datacenter.
 
 + Response 204
 

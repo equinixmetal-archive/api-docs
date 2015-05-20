@@ -3,17 +3,15 @@ Events are things that happen in the system that are worth tracking, but not
 necessarily worth sending users a notification about. An example of this is
 when a new user is added to an organization that you're a part of.
 
-## Events [/events]
+## Events [/events{?since}]
 A collection of events pertaining to the current user, their devices, or their
 organizations.
 
 ### Retrieve all Events [GET]
 Returns a list of the current user's events.
 
-
 + Parameters
   + since = `Time.now` (optional, string) ... Only include notifications updated since the given datetime. Must be a UTC datetime in ISO8601 format.
-
 
 + Response 200
 
@@ -30,7 +28,7 @@ Returns a list of the current user's events.
 A single event object.
 
 + Parameters
-  + id (string) ... The event ID (in the form of a UUID).
+  + id (string) ... The event ID in the form of a UUID.
 
 ### Retrieve an Event [GET]
 
