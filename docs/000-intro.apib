@@ -1,22 +1,27 @@
 FORMAT: 1A
-HOST: https://api.packet.net/v1
+HOST: https://api.packet.net
 
 # Packet API
 
 This is the API for Packet. Interact with your devices, user account, and
-organizations.
+projects.
+
+## Group Versioning
+
+Requesting a specific version of a resource from the Packet API is done via the `Accept` header:
+
+    curl -H 'Accept: application/json; version=1'
+
+Alternatively, if your client doesn't support setting headers (or if you're quickly experimenting), you can set the API version with a parameter in the URL, though the `Accept` header is the preferred method:
+
+    curl https://api.packet.net?version=1
 
 ## Group Authentication
 
-There are no "public" methods in the Packet API; all API methods require
-authentication. Authenticating with the Packet API consists of two parts:
+Most of the endpoints in the Packet API require authentication. Authenticating
+is done with an authentication token in the `X-Auth-Token` header.
 
-1. An application token (contained in the `X-Consumer-Token` header)
-2. A user authentication token (container in the `X-Auth-Token` header)
-
-Application tokens are used to identify each application that has permission
-to connect to the Packet API. You may create new applications in the Packet
-Portal.
+    curl -H 'X-Auth-Token: my_authentication_token' https://api.packet.net
 
 Authentication tokens are used to identify the user your application is
 connecting to the Packet API on behalf of. Think of authentication tokens as
@@ -24,15 +29,15 @@ permanent sessions&mdash;the user creates authentication tokens, and your app
 can use them to connect to the Packet API on their behalf until they delete the
 token.
 
+Users can create authentication tokens in the [Packet Portal](https://app.packet.net/portal#/api-keys).
+
 ## Group Media Types
 
 Generally speaking, the Packet API supports JSON (`application/json`) only.
 
     curl -H 'Accept: application/json' https://api.packet.net
 
-Some routes, may support other media types where appropriate. For example, `GET /devices/:id/metadata` supports returning the device's metadata as a [cloud-init](http://cloudinit.readthedocs.org/en/latest/index.html)-compatible YAML file:
-
-    curl -H 'Accept: application/x-yaml' https://api.packet.net/devices/d402405b-d805-471d-bc16-99d6aa2e4ac3/metadata
+Some routes may support other media types where appropriate.
 
 Requests that require data to be submitted to the API (`POST`, `PUT` and `PATCH`) may include the data in the request body (if the `Content-Type` header is set to `application/json`) or as form-encoded data.
 
@@ -63,9 +68,9 @@ For resources that contain collections of other resources, the Packet API will r
       ...
     }
 
-However, if you're interested in acting on resources in the `organizations`
+However, if you're interested in acting on resources in the `projects`
 collection, it doesn't make sense to make a separate API call to retrieve each
-organization. Instead, you can specify which collections you'd like to be
+project. Instead, you can specify which collections you'd like to be
 included using the `include` parameter.
 
     /user?include=projects
