@@ -176,3 +176,19 @@ Provides a listing of available operating systems to provision your new device w
                 ...
               ]
             }
+
+## Plans [/plans]
+Provides a listing of available services plans available to provision your device on.
+
+### List available Planss [GET]
+
++ Response 200
+
+  + Body
+
+            {
+              "plans": [
+                {u'slug': u'baremetal_1', u'description': u'Our Type 1 configuration is a zippy general use server, with an Intel E3-1240 v3 processor and 16GB of RAM.', u'id': u'6d1f1ffa-7912-4b78-b50d-88cc7c8ab40f', u'pricing': {u'hourly': 0.4}, u'line': u'baremetal', u'specs': {u'nics': [{u'count': 2, u'type': u'gigabit'}], u'drives': [{u'count': 2, u'type': u'SSD', u'size': u'120GB'}], u'features': {u'txt': True, u'raid': True}, u'cpus': [{u'count': 1, u'type': u'Intel E3-1240 v3'}], u'memory': {u'total': u'16GB'}}, u'name': u'Type 1'}
+                ...
+              ]
+            }
