@@ -5,9 +5,9 @@ module.exports = function(grunt) {
     aglio: {
       packet: {
         files: {
-          './dist/index.html': [ './docs/*.apib' ]
+          './dist/api.html': [ './docs/*.apib' ]
         },
-        theme: 'flatly-multi',
+        theme: 'templates/packet-strip/packet-multi',
         seperator: "\n"
       }
     },
