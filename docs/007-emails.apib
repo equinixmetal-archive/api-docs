@@ -1,0 +1,86 @@
+# Group Emails
+Manage currently logged user's email addresses.
+
+## Email [/emails]
+Add a new email address to the current user
+
+### Create an email [POST]
+
++ Request
+
+  + Body
+
+            {
+              "address": "foobar@packet.net",
+              "default": false
+            }
+
+
++ Response 201
+
+  + Headers
+
+            Location: https://api.packet.net/emails/0ff654ec-626c-4e4e-9395-dd23dcbc4337
+
+  + Body
+
+            {
+              "id": "0ff654ec-626c-4e4e-9395-dd23dcbc4337",
+              "address": "foobar@packet.net",
+              "default": false,
+              "href": "/emails/0ff654ec-626c-4e4e-9395-dd23dcbc4337"
+            }
+
+
+## Email [/emails/{id}]
+Provides one of the user's emails.
+
+### Retrieve an email [GET]
+
++ Parameters
+  + id (string) ... The email ID
+
++ Response 200
+
+  + Body
+
+            {
+              "id": "eea9d29e-40c1-4717-a1a2-a1df3e053a57",
+              "address": "example@packet.net",
+              "default": true,
+              "href": "/emails/eea9d29e-40c1-4717-a1a2-a1df3e053a57"
+            }
+
+### Update an email [PATCH]
+
++ Parameters
+  + id (string) ... The email ID
+
++ Request
+  
+  + Body
+
+            {
+              "default": true
+            }
+
+
++ Response 200
+
+  + Body
+
+            {
+              "id": "eea9d29e-40c1-4717-a1a2-a1df3e053a57",
+              "address": "example@packet.net",
+              "default": true,
+              "href": "/emails/eea9d29e-40c1-4717-a1a2-a1df3e053a57"
+            }
+
+
+### Delete an email [DELETE]
+Delete any email address except the default one.
+
++ Parameters
+  + id (string) ... The email ID.
+
++ Response 204
