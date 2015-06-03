@@ -135,6 +135,41 @@ Deletes a device and de-provisions it in our datacenter.
 
 + Response 204
 
+## Events [/projects/{id}/events]
+Provides a list of events for a single project.
+
+### Retrieves an array of events [GET]
+
++ Parameters
+  + id (string) ... The project ID.
+
++ Response 200
+
+  + Body
+
+            {
+              "events": [
+                {
+                  "id": "60670752-25cd-426e-9faa-86a602ca4c90",
+                  "type": "membership.created",
+                  "body": "%user% is now a member of the project \"%project%\"",
+                  "created_at": "2015-05-14T12:50:47Z",
+                  "relationships": [
+                    {
+                      "id": "f6c0878f-4447-4543-9316-cddfa896107b"
+                    },
+                    {
+                      "id": "1ff8f822-4864-45f5-95ed-7fe73a3091b7"
+                    }
+                  ],
+                  "interpolated": "Dolly Example is now a member of the project \"Foo Bar Project\"",
+                  "href": "/events/60670752-25cd-426e-9faa-86a602ca4c90"
+                },
+                ...
+              ]
+            }
+            
+
 ## Membership [/memberships/{id}]
 A single membership record for a project.
 
