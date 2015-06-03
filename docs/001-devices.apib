@@ -134,6 +134,37 @@ Creates an action for the given device. Possible actions include:
 
 + Response 202
 
+## Events [/devices/{id}/events]
+Provides a list of events pertaining to a specific device.
+
+### List a device's events [GET]
+
++ Parameters
+  + id (string) ... The device ID in the form of a UUID.
+
++ Response 200
+
+  + Body
+
+            {
+              "events": [
+                {
+                  "id": "55499ca6-5b65-4fca-b7b1-acdb48e19bf5",
+                  "type": "provisioning.109",
+                  "body": "Installation finished, restarting device",
+                  "created_at": "2015-03-10T15:54:54Z",
+                  "relationships": [
+                    {
+                      "id": "30d7377e-fe7f-4ee8-8394-d9440a37a68e"
+                    }
+                  ],
+                  "interpolated": "Installation finished, restarting device",
+                  "href": "/events/55499ca6-5b65-4fca-b7b1-acdb48e19bf5"
+                },
+                ...
+              ]
+            }
+
 ## Locations [/facilities]
 Provides a listing of available datacenters where you can provision Packet devices.
 
