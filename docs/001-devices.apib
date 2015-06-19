@@ -32,8 +32,12 @@ should be included in the main data structure alongside `hostname` and `plan`.
             {
               "hostname": "web1.example.com",
               "plan": "baremetal_1",
+              "billing_cycle": "hourly",
               "facility": "ewr1",
-              "operating_system": "coreos_stable"
+              "operating_system": "coreos_stable",
+              "locked": true,
+              "userdata": "---\nruncmd:\n  - [ ls, -l, / ]",
+              "tags": ["database"]
             }
 
 + Response 201
@@ -65,6 +69,8 @@ A single device object.
           "billing_cycle": "daily",
           "hostname": "web1.example.com",
           "state": "active",
+          "locked": true,
+          "userdata": "---\nruncmd:\n  - [ ls, -l, / ]",
           "tags": ["database", "app"],
           "operating_system": {
             "slug": "coreos_stable",
