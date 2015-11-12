@@ -111,3 +111,44 @@ The common [HTTP Response Status Codes](http://httpstatus.es) are used. You
 know the drill.
 
 For 400-family status codes, the response body will contain an array of errors.
+
+
+## Group Pagination
+
+In order to keep responses fast, the Packet API will automatically paginate the requested items for all collections.
+Calling the Packet API and iterating over the results using pagination is a good and easy way to do this.
+
+### `per_page`
+
+You can specify how many items to receive from a collection using the `per_page` parameter. If you do not specify it, by default, the Packet API will return a limit of `10` items.
+The `per_page` parameter is accepted for all `GET` requests on all collections, and should be specified as an integer value.
+
+    /users?per_page=25
+
+### `page`
+
+You can specify which page you want to receive using the `page` parameter. If you do not specify it, the Packet API will return the first page by default.
+The `page` parameter is accepted for all `GET` requests on all collections, and should be specified as an integer.
+
+    /users?page=2
+
+#### Response
+
+Pagination information is available in the `meta` attibute in response. For example:
+
+    "meta": {
+      "total": 330,             // Total items found
+      "first": {                // First page endpoint
+        "href": "/users?page=1"
+      },
+      "self": {                 // Current page endpoint
+        "href": "/users?page=1"
+      },
+      "previous": null,         // Previous page endpoint or null if there is not previous page
+      "next": {                 // Next page endpoint or null if there is not next page
+        "href":"/users?page=2"
+      },
+      "last": {                 // Last page endpoint
+        "href":"/users?page=66"
+      }
+    }
