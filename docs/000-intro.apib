@@ -127,15 +127,14 @@ The `per_page` parameter is accepted for all `GET` requests on all collections, 
 
 ### `page`
 
-You can specify which page you want to receive using the `page` parameter. If you do not specify it, by default, the Packet API will return the page `1`.
+You can specify which page you want to receive using the `page` parameter. If you do not specify it, the Packet API will return the first page by default.
 The `page` parameter is accepted for all `GET` requests on all collections, and should be specified as an integer.
 
     /users?page=2
 
 #### Response
 
-Pagination information is present as `meta` attibute in response.
-For example:
+Pagination information is available in the `meta` attibute in response. For example:
 
     "meta": {
       "total": 330,             // Total items found
