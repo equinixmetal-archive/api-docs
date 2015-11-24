@@ -337,3 +337,94 @@ Accept or decline a transfer request.
 ### Decline a Transfer Request [DELETE]
 
 + Response 204
+
+
+## IP Reservations [/projects/{id}/ips]
+Provides a list of IP resevations for a single project.
+
++ Parameter
+  + id (string) ... The project ID.
+
+### Retrieve all IP reservations [GET]
+
++ Response 200
+
+  + Body
+
+            [
+              {
+                "id": "174de894-01d3-45ba-b241-f24679d6f00c",
+                "address": "147.75.193.9",
+                "network": "147.75.193.9",
+                "address_family": 4,
+                "public":true,
+                "cidr":32,
+                "assignments": [
+                                  { "href": "/ips/7ab2c92c-4db4-4bb5-aaac-471cb8cb55c4" },
+                                  { "href": "/ips/ee783f17-4bd3-4798-893f-5c3d95e67b1c" }
+                                ]
+                ...
+              },
+              {
+                "id": "174de894-01d3-45ba-b241-f24679d6f00d",
+                "address": null,
+                "network": "2604:1380:4:1300::",
+                "address_family": 6,
+                "public":false,
+                "cidr":31,
+                "assignments": [
+                                  { "href": "/ips/7ab2c92c-4db4-4bb5-aaac-471cb8cb55c4" },
+                                  { "href": "/ips/ee783f17-4bd3-4798-893f-5c3d95e67b1c" }
+                                ]
+                ...
+              }
+            ]
+
+### Requesting IP reservations [POST]
+Request more IP space for a project in order to have additional IP addresses to assign to devices
+
++ Request
+
+  + Body
+
+            {
+              "type": "public_ipv4", // public_ipv4 || global_ipv4
+              "quantity": 8, // How many IPv4 you want to request. Options: 1, 2, 4, 8, 16, 32, 64, 128, 256
+              "comments": "This is my comment to the Packet team" // Optional comment
+            }
+
++ Response 204
+
+## IP Reservation [/ips/{id}]
+See information about an IP address assignment.
+
++ Parameter
+  + id (string) ... The IP reservation ID.
+
++ Model
+
+        {
+          "id": "3c29133a-d10c-4b86-86d4-69b9b16eadb5",
+          "network": "75.72.66.16", // network address
+          "address_family": 4, // 4 || 6 depending of the address family
+          "netmask": "255.255.255.255",
+          "public": true, // true for public IP reservation || false for private IP reservation
+          "cidr": 32,
+          "assignments": [
+                            { "href": "/ips/7ab2c92c-4db4-4bb5-aaac-471cb8cb55c4" },
+                            { "href": "/ips/ee783f17-4bd3-4798-893f-5c3d95e67b1c" }
+                          ]
+          "href": "/ips/3c29133a-d10c-4b86-86d4-69b9b16eadb5"
+        }
+
+### View an IP Reservation [GET]
+Returns a single IP reservation object.
+
++ Response 200
+
+  [IP Reservation][]
+
+### Remove an IP Reservation [DELETE]
+Remove an IP reservation from the project.
+
++ Response 204

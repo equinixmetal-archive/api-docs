@@ -243,3 +243,67 @@ Provides a listing of available services plans available to provision your devic
                 ...
               ]
             }
+
+## Device IP Address [/devices/{id}/ips]
+Assign an IP address to a device. The IP address must be in one of the IP ranges assigned to the device's project.
+
+### Assing an IP Address [POST]
+
++ Request
+
+  + Body
+
+            {
+              "address": "75.72.66.16/32"
+            }
+
++ Response 201
+
+  + Headers
+
+            Location: https://api.packet.net/devices/8738dd01-7246-443a-95b8-c8c493bd2c9b/ips rel="self"
+
+  + Body
+
+            {
+              "id": "6d1f1ffa-7912-4b78-b50d-88cc7c8ab40f",
+              "address": "75.72.66.16", // IP address for IPv4 || null for IPv6
+              "network": "75.72.66.16", // same as IP address for IPv4 || network address for IPv6
+              "address_family": 4,
+              "public": true, // true || false
+              "cidr": 32,
+              "assigned_to": { "href":"/devices/adf8cdfb-9574-4e2f-ae6f-5eaeb4aec5f7" },
+              "href": "/ips/6d1f1ffa-7912-4b78-b50d-88cc7c8ab40f"
+            }
+
+## IP Address [/ips/{id}]
+See information about an IP address assignment.
+
++ Parameter
+  + id (string) ... The IP address ID.
+
++ Model
+
+        {
+          "id": "3c29133a-d10c-4b86-86d4-69b9b16eadb5",
+          "address": "75.72.66.16", // IP address for IPv4 || null for IPv6
+          "network": "75.72.66.16", // network address
+          "address_family": 4, // 4 || 6 depending of the address family
+          "netmask": "255.255.255.255",
+          "public": true, // true for public IP or false for private IP
+          "cidr": 32,
+          "assigned_to": { "id":"8738dd01-7246-443a-95b8-c8c493bd2c9b" },
+          "href": "/ips/3c29133a-d10c-4b86-86d4-69b9b16eadb5"
+        }
+
+### View an IP Address [GET]
+Returns a single IP address object.
+
++ Response 200
+
+  [IP Address][]
+
+### Unassign an IP Address [DELETE]
+Unassign an IP address record. This will remove the relationship between an IP and the device and will make the IP address available to be assigned to another device.
+
++ Response 204
