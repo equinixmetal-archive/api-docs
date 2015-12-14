@@ -4,6 +4,9 @@ Devices are the heart of the Packet ecosystem.
 ## Devices [/projects/{id}/devices]
 A collection of devices for a given project.
 
++ Parameters
+    + id (string) ... Project UUID
+
 ### Retrieve all Devices [GET]
 Returns a list of the current projects's devices.
 
@@ -56,8 +59,37 @@ should be included in the main data structure alongside `hostname` and `plan`.
 ## Device [/devices/{id}]
 A single device object.
 
+    + Attributes (object)
+        + hostname (string)
+        + plan (enum[string])
+            + Members
+                + baremetal_0 - Type 0
+                + baremetal_1 - Type 1
+                + baremetal_3 - Type 3
+        + billing_cycle (enum[string])
+            + Members
+                + hourly
+        + facility (enum[string]) - Facility Location
+            + Members
+                + ewr1 - Parsippany, NJ
+        + operating_system (enum[string]) - Operating system to install. Valid operating systems vary depending on the selected plan.
+        See `/operating-systems` endpoint for information about available operating systems.
+            + Members
+                + centos_7 - CentOS 7
+                + centos_6 - CentOS 6
+                + coreos_stable - CoreOS (stable)
+                + coreos_beta - CoreOS (beta)
+                + coreos_alpha - CoreOS (alpha)
+                + debian_8 - Debian 8
+                + debian_7 - Debian 7
+                + ubuntu_14_04 - Ubuntu 14.04 LTS
+        + locked (boolean, optional) - Set locked status
+            + Default: false
+        + userdata (string, optional) - Userdata you want to process during provision
+
 + Parameters
-  + id (string) ... The device ID in the form of a UUID.
+    + id (string) ... The device ID in the form of an UUID.
+
 
 + Model
 

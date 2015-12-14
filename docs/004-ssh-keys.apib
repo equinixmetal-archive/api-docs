@@ -24,8 +24,7 @@ Returns an array of ssh keys.
                     "href": "/users/9e0acc49-cfe3-4a07-b3b1-a8a3135a6571"
                   },
                   "href": "/ssh-keys/ded9047b-1872-467a-ab4a-ac042aafbbdc"
-                },
-                ...
+                }
               ]
             }
 
@@ -34,20 +33,20 @@ Add a new ssh key for the current user.
 
 + Request
 
-  + Body
+    + Body
 
             {
               "label":"My New SSH Key",
               "key":"ssh-rsa BBBBC4a99Eklf7..."
             }
 
-+ Reponse 201
++ Response 201
 
-  + Headers
+    + Headers
 
             Location: https://api.packet.net/ssh-keys/ded9047b-1872-467a-ab4a-ac042aafbbdc rel="self"
 
-  + Body
+    + Body
 
             {
               "id": "ded9047b-1872-467a-ab4a-ac042aafbbdc",
@@ -63,12 +62,12 @@ Add a new ssh key for the current user.
             }
 
 ## SSH Key [/ssh-keys/{id}]
-Returns a single ssh key object.				    
+Returns a single ssh key object.
 
 ### Retrieve a SSH Key [GET]
 
 + Parameters
-  + id (string) ... The ssh key ID to retrieve.
+    + id (string) ... The ssh key ID to retrieve.
 
 + Response 200
 
