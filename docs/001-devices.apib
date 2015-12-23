@@ -61,35 +61,35 @@ A single device object.
 
 + Model
 
-        {
-          "id": "c8109e92-ae6c-4134-8fd9-8d86a702e7c3",
-          "plan": {
-            "id": "d3ceef7e-e87d-44d6-a4cb-5571f4f4cd8a"
-          },
-          "billing_cycle": "daily",
-          "hostname": "web1.example.com",
-          "state": "active",
-          "locked": true,
-          "userdata": "---\nruncmd:\n  - [ ls, -l, / ]",
-          "tags": ["database", "app"],
-          "operating_system": {
-            "slug": "coreos_stable",
-            "name": "CoreOS (Stable)",
-            "distro": "coreos",
-            "version": "stable"
-          },
-          "ip_addresses": [
-            { "address": "2.3.4.5", "address_family": 4, "public": true },
-            { "address": "10.0.0.0", "address_family": 4, "public": false },
-            { "address": "2604:1380::1", "address_family": 6, "public": true }
-          ],
-          "project": {
-            "href": "https://api.packet.net/projects/0a315aa2-4513-4780-9093-4d1af8400a7b"
-          },
-          "created_at": "2014-04-14T02:15:15Z",
-          "updated_at": "2014-04-15T02:15:15Z",
-          "href": "https://api.packet.net/devices/c8109e92-ae6c-4134-8fd9-8d86a702e7c3"
-        }
+            {
+              "id": "c8109e92-ae6c-4134-8fd9-8d86a702e7c3",
+              "plan": {
+                "id": "d3ceef7e-e87d-44d6-a4cb-5571f4f4cd8a"
+              },
+              "billing_cycle": "daily",
+              "hostname": "web1.example.com",
+              "state": "active",
+              "locked": true,
+              "userdata": "---\nruncmd:\n  - [ ls, -l, / ]",
+              "tags": ["database", "app"],
+              "operating_system": {
+                "slug": "coreos_stable",
+                "name": "CoreOS (Stable)",
+                "distro": "coreos",
+                "version": "stable"
+              },
+              "ip_addresses": [
+                { "address": "2.3.4.5", "address_family": 4, "public": true },
+                { "address": "10.0.0.0", "address_family": 4, "public": false },
+                { "address": "2604:1380::1", "address_family": 6, "public": true }
+              ],
+              "project": {
+                "href": "https://api.packet.net/projects/0a315aa2-4513-4780-9093-4d1af8400a7b"
+              },
+              "created_at": "2014-04-14T02:15:15Z",
+              "updated_at": "2014-04-15T02:15:15Z",
+              "href": "https://api.packet.net/devices/c8109e92-ae6c-4134-8fd9-8d86a702e7c3"
+            }
 
 ### Retrieve a Device [GET]
 Type-specific options (such as `facility` for `baremetal` devices) will be
@@ -284,17 +284,17 @@ See information about an IP address assignment.
 
 + Model
 
-        {
-          "id": "3c29133a-d10c-4b86-86d4-69b9b16eadb5",
-          "address": "75.72.66.16", // IP address for IPv4 || null for IPv6
-          "network": "75.72.66.16", // network address
-          "address_family": 4, // 4 || 6 depending of the address family
-          "netmask": "255.255.255.255",
-          "public": true, // true for public IP or false for private IP
-          "cidr": 32,
-          "assigned_to": { "id":"8738dd01-7246-443a-95b8-c8c493bd2c9b" },
-          "href": "/ips/3c29133a-d10c-4b86-86d4-69b9b16eadb5"
-        }
+            {
+              "id": "3c29133a-d10c-4b86-86d4-69b9b16eadb5",
+              "address": "75.72.66.16",
+              "network": "75.72.66.16",
+              "address_family": 4,
+              "netmask": "255.255.255.255",
+              "public": true,
+              "cidr": 32,
+              "assigned_to": { "id":"8738dd01-7246-443a-95b8-c8c493bd2c9b" },
+              "href": "/ips/3c29133a-d10c-4b86-86d4-69b9b16eadb5"
+            }
 
 ### View an IP Address [GET]
 Returns a single IP address object.
@@ -307,3 +307,126 @@ Returns a single IP address object.
 Unassign an IP address record. This will remove the relationship between an IP and the device and will make the IP address available to be assigned to another device.
 
 + Response 204
+
+## Traffic [/devices/{id}/traffic{?direction,timeframe,interval,bucket}]
+Get traffic for a specific device.
+
++ Parameters
+    + id (string) - The device ID in the form of a UUID
+    + direction (enum[string]) - Traffic direction
+        + Members
+            + inbound
+            + outbound
+    + timeframe (date, required) ... Date UTC format.
+      An array with `started_at` and `ended_at` keys.
+      For example: `?timeframe['started_at']=2014-09-10T10:00:00Z&timeframe['ended_at']=2014-09-12T10:00:00Z`
+    + interval (enum[string], optional) ... Set the interval you want to get from traffic.
+        The interval parameter groups results into sub-timeframes spanning a specified length of time. Empty value to avoid grouping results by interval.
+        + Members
+            + minute - min
+            + hour
+            + day
+            + week
+            + month
+            + year
+            + hour_of_day
+            + day_of_week - 0:Sunday, 1:Monday, 2:Tuesday, 3:Wednesday, 4:Thursday, 5:Friday, 6:Saturday
+            + day_of_month
+            + month_of_year
+    + bucket (enum[string], optional) ... Define if the traffic is calculated inside or outside the subnet. Empty value to avoid filtering traffic by bucket.
+        + Members
+            + internal
+            + external
+
+### Device Traffic [GET]
+Retrieve device traffic.
+
++ Request by timeframe
+
+  + Body
+
+            {
+                timeframe: {
+                    started_at: '2014-09-10T10:00:00Z',
+                    ended_at: '2014-09-11T10:00:00Z'
+                }
+            }
+
++ Response 200
+
+    + Body
+
+            {
+              "metrics": [{
+                  "tag": 0,
+                  "class_id": "unknown         ",
+                  "mac_src": "00:00:00:00:00:00",
+                  "mac_dst": "00:00:00:00:00:00",
+                  "vlan": 0,
+                  "as_src": 0,
+                  "as_dst": 0,
+                  "ip_src": "192.168.10.2",
+                  "ip_dst": "192.168.10.117",
+                  "port_src": 6001,
+                  "port_dst": 1790,
+                  "tcp_flags": 0,
+                  "ip_proto": 6,
+                  "tos": 192,
+                  "packets": 2,
+                  "bytes": 1104,
+                  "flows": 0,
+                  "stamp_inserted": "2015-06-19T17:55:00.000Z",
+                  "stamp_updated": "2015-06-19T17:57:01.000Z"
+              }, {
+                  "tag": 0,
+                  "class_id": "unknown         ",
+                  "mac_src": "00:00:00:00:00:00",
+                  "mac_dst": "00:00:00:00:00:00",
+                  "vlan": 0,
+                  "as_src": 0,
+                  "as_dst": 0,
+                  "ip_src": "10.1.1.11",
+                  "ip_dst": "10.1.8.241",
+                  "port_src": 1790,
+                  "port_dst": 6001,
+                  "tcp_flags": 0,
+                  "ip_proto": 6,
+                  "tos": 0,
+                  "packets": 1,
+                  "bytes": 52,
+                  "flows": 0,
+                  "stamp_inserted": "2015-06-19T17:55:00.000Z",
+                  "stamp_updated": "2015-06-19T17:57:01.000Z"
+              },...
+            }
+
++ Request by interval
+
+    + Body
+
+            {
+                interval: 'day'
+                timeframe: {
+                    started_at: '2014-06-19T10:00:00Z',
+                    ended_at: '2014-06-25T10:00:00Z'
+                }
+            }
+
++ Response 200
+
+    + Body
+
+            {
+                "result":[
+                    {
+                        "datetime":"2015-06-19T17:00:00.000Z",
+                        "value":"1104.0"
+                    },{
+                        "datetime":"2015-06-19T18:00:00.000Z",
+                        "value":"6624.0"
+                    },{
+                        "datetime":"2015-06-19T19:00:00.000Z",
+                        "value":"21620090.0"
+                    }
+                ]
+            }
