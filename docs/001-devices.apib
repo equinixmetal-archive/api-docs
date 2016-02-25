@@ -39,7 +39,7 @@ should be included in the main data structure alongside `hostname` and `plan`.
               "facility": "ewr1",
               "operating_system": "coreos_stable",
               "locked": true,
-              "userdata": "---\nruncmd:\n  - [ ls, -l, / ]",
+              "userdata": "#cloud-config\n---\nruncmd:\n  - [ ls, -l, / ]",
               "tags": ["database"]
             }
 
@@ -102,7 +102,7 @@ A single device object.
               "hostname": "web1.example.com",
               "state": "active",
               "locked": true,
-              "userdata": "---\nruncmd:\n  - [ ls, -l, / ]",
+              "userdata": "#cloud-config\n---\nruncmd:\n  - [ ls, -l, / ]",
               "tags": ["database", "app"],
               "operating_system": {
                 "slug": "coreos_stable",
