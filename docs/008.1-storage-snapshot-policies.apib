@@ -1,0 +1,67 @@
+## Snapshot Policies [/storage/{id}/snapshot-policies]
+Manage volume's Snapshot Policies.
+
++ Parameters
+  + id (string) ... The volume ID in the form of a UUID.
+
+### Create Volume Snapshots [POST]
+Creates a new snapshot of your volume.
+
++ Request
+
+  + Body
+
+            {
+              "snapshot_count": 4,
+              "snapshot_frequency": "15min"
+            }
+
++ Response 202
+
+## Snapshot Policy [/storage/snapshot-policies/{id}]
+A single snapshot policy object.
+
+    + Attributes (object)
+        + snapshot_count (int)
+        + snapshot_frequency (enum[string])
+          + Members
+            + 1min
+            + 15min
+            + 1hour
+            + 1day
+            + 1week
+            + 1month
+            + 1year
+
++ Parameters
+    + id (string) ... The snapshot policy ID in the form of an UUID.
+
++ Model
+
+            {
+              "id": "c8109e92-ae6c-4134-8fd9-8d86a702e7c3",
+              "snapshot_count": 7,
+              "snapshot_frequency": "1day",
+              "volume": {
+                "href": "/storage/1fcf06cc-998c-443a-8d40-0f50f9f85a0a"
+              },
+              "created_at": "2014-04-14T02:15:15Z",
+              "updated_at": "2014-04-15T02:15:15Z",
+            }
+
+### Update a Snapshot Policy [PATCH]
+
++ Request
+
+  + Body
+
+            {
+              "snapshot_count": 4,
+              "snapshot_frequency": "1week",
+            }
+
++ Response 200
+
+### Delete Snapshot Policy [DELETE]
+
++ Response 204
