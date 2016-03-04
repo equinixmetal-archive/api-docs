@@ -150,13 +150,13 @@ Deletes a device and deprovisions it in our datacenter.
 + Response 204
 
 ## Actions [/devices/{id}/actions]
-A collection of actions for a given device.
+Perform an action on the specified device.
 
 + Parameters
-  + id (string) ... The device ID to retrieve actions for.
+  + id (string) ... The device ID to perform the action on.
 
-### Create an Action [POST]
-Creates an action for the given device. Possible actions include:
+### Perform an Action [POST]
+Performs an action for the given device. Possible actions include:
 
 - power_on
 - power_off
