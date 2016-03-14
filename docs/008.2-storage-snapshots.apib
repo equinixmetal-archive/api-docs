@@ -1,0 +1,65 @@
+## Volume Snapshots [/storage/{id}/snapshots]
+Manage volume's Snapshots.
+
++ Parameters
+  + id (string) ... The volume ID in the form of a UUID.
+
+### List volume's snapshots [GET]
+Returns a list of the current volume’s snapshots.
+
++ Response 200
+
+  + Body
+
+            {
+              "snapshots": [
+                {
+                  "id": "55499ca6-5b65-4fca-b7b1-acdb48e19bf5",
+                  "status": "available",
+                  "created_at": "2015-03-10T15:54:54Z",
+                  "volume": {
+                    "href": "/storage/30d7377e-fe7f-4ee8-8394-d9440a37a68e"
+                  }
+                },
+                ...
+              ]
+            }
+
+### Create Volume Snapshots [POST]
+Creates a new snapshot of your volume.
+
++ Request
+
+  + Body
+
+            {}
+
++ Response 202
+
+## Volume Snapshot [/storage/{volume_id}/snapshots/{id}]
+A single snapshot object.
+
+    + Attributes (object)
+        + status (enum[string])
+          + Members
+            + available
+            + unavailable
+
++ Parameters
+  + volume_id (string) ... The volume ID in the form of a UUID.
+  + id (string) ... The snapshot ID in the form of a UUID.
+
++ Model
+
+            {
+              "id": "c8109e92-ae6c-4134-8fd9-8d86a702e7c3",
+              "status": "available",
+              "volume": {
+                "href": "/storage/1fcf06cc-998c-443a-8d40-0f50f9f85a0a"
+              },
+              "created_at": "2014-04-14T02:15:15Z"
+            }
+
+### Delete Volume Snapshots [DELETE]
+
++ Response 204

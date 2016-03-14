@@ -1,0 +1,41 @@
+## Volume Attachments [/storage/{id}/attachments]
+Manage volume's attachments.
+
++ Parameters
+  + id (string) ... The volume ID in the form of a UUID.
+
+### Attach Volume [POST]
+Attach your volume to a device.
+
++ Request
+
+  + Body
+
+            {
+              "device_id": "6946db0c-3a92-49a2-bf0c-101561eb829f"
+            }
+
++ Response 201
+
+## Volume Attachment [/storage/attachments/{id}]
+A single attachment object.
+
++ Parameters
+  + id (string) ... The attachment ID in the form of a UUID.
+
++ Model
+
+            {
+              "id": "c8109e92-ae6c-4134-8fd9-8d86a702e7c3",
+              "device": {
+                "href": "/devices/415d25a0-6643-4218-9f1f-6ffadae1e787"
+              },
+              "volume": {
+                "href": "/storage/1fcf06cc-998c-443a-8d40-0f50f9f85a0a"
+              },
+              "created_at": "2014-04-14T02:15:15Z"
+            }
+
+### Detach Volume [DELETE]
+
++ Response 204

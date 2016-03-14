@@ -1,0 +1,136 @@
+# Group Block Storage
+
+
+## Volumes [/projects/{id}/storage]
+Manage your volumes.
+
++ Parameters
+    + id (string) ... Project UUID
+
+### Retrieve all Volumes [GET]
+Returns a list of the current projects's volumes.
+
++ Response 200
+
+  + Body
+
+            {
+              "volumes": [
+                { "href": "https://api.packet.net/storage/2c9b3a6c-883d-427a-9f17-e72f849236dc" },
+                { "href": "https://api.packet.net/storage/08435e09-83cf-4b25-b4b6-bced867abb22" },
+                ...
+              ]
+            }
+
+### Create a Volume [POST]
+Creates a new volume in our datacenter.
+
++ Request
+
+  + Body
+
+            {
+              "description": "Example Storage",
+              "plan": "storage_1",
+              "size": 200,
+              "facility": "ewr1",
+              "snapshot_policies": { "snapshot_count": 4, "snapshot_frequency": "15min" }
+            }
+
++ Response 201
+
+  + Headers
+
+            Location: https://api.packet.net/storage/932f7363-fdbf-47e9-a577-08025e2e2443 rel="self"
+
+  + Body
+
+            {
+              "href": "https://api.packet.net/storage/932f7363-fdbf-47e9-a577-08025e2e2443"
+            }
+
+
+## Volume [/storage/{id}]
+A single volume object.
+
+    + Attributes (object)
+        + name (string) - read-only
+        + description (string)
+        + plan (enum[string])
+            + Members
+                + storage_1 - Standard Plan
+                + storage_2 - Performance Plan
+        + facility (enum[string]) - Facility Location
+            + Members
+                + ewr1 - Parsippany, NJ
+        + size (int) - expressed in GB. Min size is 10GB, max size is 15000GB.
+        + snapshot_policies (object)
+          + snapshot_count (int)
+          + snapshot_frequency (enum[string])
+            + Members
+              + 1min
+              + 15min
+              + 1hour
+              + 1day
+              + 1week
+              + 1month
+              + 1year
+
++ Parameters
+    + id (string) ... The volume ID in the form of an UUID.
+
++ Model
+
+            {
+              "id": "c8109e92-ae6c-4134-8fd9-8d86a702e7c3",
+              "plan": {
+                "id": "d3ceef7e-e87d-44d6-a4cb-5571f4f4cd8a"
+              },
+              "name": "volume-c8109e92",
+              "description": "volume description",
+              "size": 200,
+              "state": "active",
+              "locked": true,
+              "billing_cycle": "hourly",
+              "facility": {
+                "href": "/facilities/3ce2f258-6c31-4f7a-8e00-b82b1cf5899d"
+              },
+              "snapshot_policies": [
+                {
+                  "href": "/storage/snapshot-policies/de845402-b3ef-4003-95b3-672856588b0a"
+                }
+              ],
+              "attachments": [
+              ],
+              "project": {
+                "href": "https://api.packet.net/projects/0a315aa2-4513-4780-9093-4d1af8400a7b"
+              },
+              "created_at": "2014-04-14T02:15:15Z",
+              "updated_at": "2014-04-15T02:15:15Z",
+              "href": "https://api.packet.net/devices/c8109e92-ae6c-4134-8fd9-8d86a702e7c3"
+            }
+
+### Retrieve a Volume [GET]
+
++ Response 200
+
+  [Volume][]
+
+### Update a Volume [PATCH]
+
++ Request
+
+  + Body
+
+            {
+              "description": "Updated volume description",
+              "size": 250,
+              "locked": true
+            }
+
++ Response 200
+
+### Delete a Volume [DELETE]
+Deletes a volume from our datacenter.
+
++ Response 204

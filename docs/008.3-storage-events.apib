@@ -1,0 +1,31 @@
+## Events [/volumes/{id}/events]
+Manage volume's events.
+
++ Parameters
+  + id (string) ... The volume ID in the form of a UUID.
+
+### List volume's events [GET]
+Returns a list of the current volume’s events.
+
++ Response 200
+
+  + Body
+
+            {
+              "events": [
+                {
+                  "id": "55499ca6-5b65-4fca-b7b1-acdb48e19bf5",
+                  "type": "snapshot_policy.created",
+                  "body": "Snapshot schedule created",
+                  "created_at": "2015-03-10T15:54:54Z",
+                  "relationships": [
+                    {
+                      "href":"#32ba077f-656d-4546-916f-ddf5c7164828"
+                    }
+                  ],
+                  "interpolated": "Snapshot schedule created",
+                  "href": "/events/55499ca6-5b65-4fca-b7b1-acdb48e19bf5"
+                },
+                ...
+              ]
+            }
