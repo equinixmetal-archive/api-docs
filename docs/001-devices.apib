@@ -28,6 +28,16 @@ Creates a new device and provisions it in our datacenter.
 Type-specific options (such as `operating_system` for `baremetal` devices)
 should be included in the main data structure alongside `hostname` and `plan`.
 
+The `features` attribute allows you to optionally specify what features your
+server should have. For example, if you require a server with a [TPM chip](https://en.wikipedia.org/wiki/Trusted_Platform_Module),
+you may specify `{ "features": { "tpm": "required" } }` (or `{ "features": ["tpm"] }`
+in shorthand). The request will fail if there are no available servers matching
+your criteria. Alternatively, if you do not _require_ a certain feature, but
+would prefer to be assigned a server with that feature if there are any
+available, you may specify that feature with a `preferred` value (see the
+example request below). The request will not fail if we have no servers with
+that feature in our inventory.
+
 + Request
 
   + Body
@@ -37,6 +47,7 @@ should be included in the main data structure alongside `hostname` and `plan`.
               "plan": "baremetal_1",
               "billing_cycle": "hourly",
               "facility": "ewr1",
+              "features": { "feature_a": "required", "feature_b": "preferred" },
               "operating_system": "coreos_stable",
               "locked": true,
               "userdata": "#cloud-config\n---\nruncmd:\n  - [ ls, -l, / ]",
