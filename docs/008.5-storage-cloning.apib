@@ -1,0 +1,18 @@
+## Volume Cloning [/storage/{id}/clone]
+Clone volumes/snapshots.
+
++ Parameters
+  + id (string) ... The volume ID in the form of a UUID.
+
+### Clone Volume/Snapshot[POST]
+Clone your volume or snapshot into a new volume. To clone the volume, send an empty body. To promote a volume snapshot into a new volume, include the `snapshot_timestamp` attribute in the request body.
+
++ Request
+
+  + Body
+
+            {
+              "snapshot_timestamp": "1454963578223" // optional
+            }
+
++ Response 201
