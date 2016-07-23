@@ -3,10 +3,12 @@ env:
     - SLACK_ORG=packet PROJECT="<https://github.com/packethost/apidocs|packethost/apidocs>"
     - secure: iA5TPTu2zP5iTATxMxrl2NHT6SXrjh8xvqc7zG2A6ceoSv2vkZykdVDqMASarHJC60uN8NLWiDkwXXW/sosKfCkWQlkLf9hBjEInQLGHzjKJbdOs2KPZS50OSGfuP1AR+mBg3W0AZ4Rhxf5apxhI7lk1DX3/FUMbwWdKnM2xPMNbQTAn3PMjfPmsoO2C7hOfWoppu8GdzS40ClUrTuLhg4+7+FIMPcnGH4PQgqwp4hZXvF/RaKFKV/TmlQ0PA3Mkovg9oGqViAhaLmi582uiMcBu0rbdk8RTCETDpOJ1GJhjKyjZGGqfTRgF7Xwaht97UVaCHvvKPMT/EF6JpM0nxg==
 
+build_image: drydock/u14nod:prod
+
 language: node_js
 
 node_js:
-  - "0.10"
+  - 4
 
 before_install:
   - npm install -g grunt-cli
