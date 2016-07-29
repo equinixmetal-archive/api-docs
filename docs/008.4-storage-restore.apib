@@ -1,0 +1,18 @@
+## Volume Restore [/storage/{id}/restore]
+Restore volumes.
+
++ Parameters
+  + id (string) ... The volume ID in the form of a UUID.
+
+### Restore Volume[POST]
+Restore the volume to the given snapshot.
+
++ Request
+
+  + Body
+
+            {
+              "restore_point": "1454963578223"
+            }
+
++ Response 200

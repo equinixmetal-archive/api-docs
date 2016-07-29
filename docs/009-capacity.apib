@@ -1,0 +1,44 @@
+# Group Capacity
+
+
+## Capacity [/capacity]
+Check our system capacity.
+
+### View capacity [GET]
+Returns a list of facilities and plans with their current capacity
+
++ Response 200
+
+  + Body
+
+            {
+              "capacity": {
+                "ewr1": {
+                  "baremetal_0": {
+                    "level": "normal"
+                  },
+                  "baremetal_1": {
+                    "level": "unavailable"
+                  },
+                  ...
+                },
+                ...
+            }
+
+### Check capacity [POST]
+Validates if a deploy can be fulfilled.
+
++ Request
+
+  + Body
+
+            {
+              "servers":
+                [
+                  {"facility": "ewr1", "plan":"baremetal_0", "quantity":"1"},
+                  {"facility": "sjc1", "plan":"baremetal_2", "quantity":"2"},
+                  {"facility": "ams1", "plan":"baremetal_1", "quantity":"3"}
+                ]
+            }
+
++ Response 204
