@@ -8,7 +8,7 @@ module.exports = function(grunt) {
           './dist/api.html': [ './docs/*.apib' ]
         },
         options: {
-          theme: 'templates/packet-strip/packet-multi'
+          themeTemplate: 'templates/packet-strip/packet-multi.jade'
         }
       }
     },

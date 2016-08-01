@@ -4,6 +4,7 @@
   "description": "API documentation for the Packet API",
   "repository": "https://github.com/packethost/apidocs",
   "dependencies": {
+    "aglio-theme-olio": "^1.6.3",
     "grunt": "^0.4.5",
     "grunt-aglio": "^0.4.1"
   },
