@@ -4,6 +4,29 @@ Manage volume's attachments.
 + Parameters
   + id (string) ... The volume ID in the form of a UUID.
 
+### List Volume's Attachments [GET]
+Returns a list of the current volume's attachments.
+
++ Response 200
+
+  + Body
+
+            {
+              "attachments": [
+                {
+                  "id": "9b7d0d24-7fa0-4fd4-80b8-ef3bcd9f1f3b",
+                  "created_at": "2016-09-06T17:40:25Z",
+                  "volume": {
+                    "href": "/storage/af060b0e-aa5e-4815-9471-46971e7263e7"
+                  },
+                  "device": {
+                    "href": "/devices/f97eb9e5-13ba-402f-bfbf-6ee52cac8722"
+                  },
+                  "href": "/storage/attachments/9b7d0d24-7fa0-4fd4-80b8-ef3bcd9f1f3b"
+                }, ...
+              ]
+            }
+
 ### Attach Volume [POST]
 Attach your volume to a device.
 
@@ -17,24 +40,31 @@ Attach your volume to a device.
 
 + Response 201
 
-## Volume Attachment [/storage/attachments/{id}]
+## Attachment [/storage/attachments/{id}]
 A single attachment object.
 
 + Parameters
-  + id (string) ... The attachment ID in the form of a UUID.
+    + id (string) ... The attachment ID in the form of an UUID.
 
 + Model
 
             {
-              "id": "c8109e92-ae6c-4134-8fd9-8d86a702e7c3",
-              "device": {
-                "href": "/devices/415d25a0-6643-4218-9f1f-6ffadae1e787"
-              },
+              "id": "9b7d0d24-7fa0-4fd4-80b8-ef3bcd9f1f3b",
               "volume": {
-                "href": "/storage/1fcf06cc-998c-443a-8d40-0f50f9f85a0a"
+                "href": "/storage/af060b0e-aa5e-4815-9471-46971e7263e7"
               },
-              "created_at": "2014-04-14T02:15:15Z"
+              "device": {
+                "href": "/devices/f97eb9e5-13ba-402f-bfbf-6ee52cac8722"
+              },
+              "created_at": "2014-04-14T02:15:15Z",
+              "href": "/storage/attachments/9b7d0d24-7fa0-4fd4-80b8-ef3bcd9f1f3b"
             }
+
+### Retrieve an Attachment [GET]
+
++ Response 200
+
+  [Attachment][]
 
 ### Detach Volume [DELETE]
 
