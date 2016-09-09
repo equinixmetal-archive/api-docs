@@ -276,7 +276,7 @@ Provides a listing of available services plans available to provision your devic
                   "name": "Type 1",
                   "id": "6d1f1ffa-7912-4b78-b50d-88cc7c8ab40f",
                   "description": "Our Type 1 configuration ...",
-                  "pricing": { "hourly": 0.4 },
+                  "pricing": { "hour": 0.4 },
                   "line": "baremetal",
                   "specs": {
                     "nics": [{ "count": 2, "type": "gigabit" }],
@@ -285,6 +285,11 @@ Provides a listing of available services plans available to provision your devic
                     "cpus": [{ "count": 1, "type": "Intel E3-1240 v3" }],
                     "memory": { "total": "16GB" }
                   }
+                  "available_in": [
+                    { "href": "/facilities/2b70eb8f-fa18-47c0-aba7-222a842362fd" },
+                    { "href": "/facilities/8e6470b3-b75e-47d1-bb93-45b225750975" },
+                    { "href": "/facilities/e1e9c52e-a0bc-4117-b996-0fc94843ea09" }
+                  ],
                 },
                 ...
               ]
