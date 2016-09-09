@@ -201,7 +201,7 @@ A membership has the following parameters:
 - id
 - user
 - project
-- roles
+- roles [collaborator|billing]
 
 + Parameters
   + id (string) ... The membership ID.
@@ -254,9 +254,9 @@ In order to add a user to a project, they must first be invited.
   + Body
 
             {
-              "user": "3624b674-ca22-4bd6-a8d7-2090a2a2c15d",
+              "invitee": "3624b674-ca22-4bd6-a8d7-2090a2a2c15d",
               // or
-              "user": "billy@example.com",
+              "invitee": "billy@example.com",
               "message": "Welcome to my project!",
               "roles": [ "collaborator", "billing" ]
             }
