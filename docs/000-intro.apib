@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://api.packet.net
+HOST: 
 
 # Packet API
 
@@ -14,14 +14,14 @@ Requesting a specific version of a resource from the Packet API is done via the 
 
 Alternatively, if your client doesn't support setting headers (or if you're quickly experimenting), you can set the API version with a parameter in the URL, though the `Accept` header is the preferred method:
 
-    curl https://api.packet.net?version=1
+    curl ?version=1
 
 ## Group Authentication
 
 Most of the endpoints in the Packet API require authentication. Authenticating
 is done with an authentication token in the `X-Auth-Token` header.
 
-    curl -H 'X-Auth-Token: my_authentication_token' https://api.packet.net
+    curl -H 'X-Auth-Token: my_authentication_token' 
 
 Authentication tokens are used to identify the user your application is
 connecting to the Packet API on behalf of. Think of authentication tokens as
@@ -35,15 +35,15 @@ Users can create authentication tokens in the [Packet Portal](https://app.packet
 
 Generally speaking, the Packet API supports JSON (`application/json`) only.
 
-    curl -H 'Accept: application/json' https://api.packet.net
+    curl -H 'Accept: application/json' 
 
 Some routes may support other media types where appropriate.
 
 Requests that require data to be submitted to the API (`POST`, `PUT` and `PATCH`) may include the data in the request body (if the `Content-Type` header is set to `application/json`) or as form-encoded data.
 
-    curl -H "Content-Type: application/json" -d '{"param":"value"}' https://api.packet.net/devices
+    curl -H "Content-Type: application/json" -d '{"param":"value"}' /devices
     # or
-    curl -d 'param=value' https://api.packet.net/devices
+    curl -d 'param=value' /devices
 
 ## Group Common Parameters
 
@@ -57,8 +57,8 @@ For resources that contain collections of other resources, the Packet API will r
       ...
       // Includes "href" links if the resource is reachable through the API.
       "projects": [
-        { "href": "https://api.packet.net/projects/5b590e4f-be96-4400-ae32-c315ee67964d" },
-        { "href": "https://api.packet.net/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd" }
+        { "href": "/projects/5b590e4f-be96-4400-ae32-c315ee67964d" },
+        { "href": "/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd" }
       ],
       // Includes "id" attributes if not.
       "emails": [
@@ -81,13 +81,13 @@ will return
       ...
       "projects": [
         {
-          "href": "https://api.packet.net/projects/c851d3c5-d55d-4b1a-99f1-96fc64768bc3",
+          "href": "/projects/c851d3c5-d55d-4b1a-99f1-96fc64768bc3",
           "id": "c851d3c5-d55d-4b1a-99f1-96fc64768bc3",
           "name": "Project 1",
           ...
         },
         {
-          "href": "https://api.packet.net/projects/21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2",
+          "href": "/projects/21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2",
           "id": "21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2",
           "name": "Project 2",
           ...

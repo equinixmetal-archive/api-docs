@@ -16,8 +16,8 @@ Returns a list of the current projects's volumes.
 
             {
               "volumes": [
-                { "href": "https://api.packet.net/storage/2c9b3a6c-883d-427a-9f17-e72f849236dc" },
-                { "href": "https://api.packet.net/storage/08435e09-83cf-4b25-b4b6-bced867abb22" },
+                { "href": "/storage/2c9b3a6c-883d-427a-9f17-e72f849236dc" },
+                { "href": "/storage/08435e09-83cf-4b25-b4b6-bced867abb22" },
                 ...
               ]
             }
@@ -41,12 +41,12 @@ Creates a new volume in our datacenter.
 
   + Headers
 
-            Location: https://api.packet.net/storage/932f7363-fdbf-47e9-a577-08025e2e2443 rel="self"
+            Location: /storage/932f7363-fdbf-47e9-a577-08025e2e2443 rel="self"
 
   + Body
 
             {
-              "href": "https://api.packet.net/storage/932f7363-fdbf-47e9-a577-08025e2e2443"
+              "href": "/storage/932f7363-fdbf-47e9-a577-08025e2e2443"
             }
 
 
@@ -103,11 +103,11 @@ A single volume object.
               "attachments": [
               ],
               "project": {
-                "href": "https://api.packet.net/projects/0a315aa2-4513-4780-9093-4d1af8400a7b"
+                "href": "/projects/0a315aa2-4513-4780-9093-4d1af8400a7b"
               },
               "created_at": "2014-04-14T02:15:15Z",
               "updated_at": "2014-04-15T02:15:15Z",
-              "href": "https://api.packet.net/devices/c8109e92-ae6c-4134-8fd9-8d86a702e7c3"
+              "href": "/devices/c8109e92-ae6c-4134-8fd9-8d86a702e7c3"
             }
 
 ### Retrieve a Volume [GET]

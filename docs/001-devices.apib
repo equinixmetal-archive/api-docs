@@ -16,8 +16,8 @@ Returns a list of the current projects's devices.
 
             {
               "devices": [
-                { "href": "https://api.packet.net/devices/8f10d92c-3c0b-4df4-a9e1-c9fb8ce1a79a" },
-                { "href": "https://api.packet.net/devices/73895ed2-d6c6-4229-bb67-ae3143d64148" },
+                { "href": "/devices/8f10d92c-3c0b-4df4-a9e1-c9fb8ce1a79a" },
+                { "href": "/devices/73895ed2-d6c6-4229-bb67-ae3143d64148" },
                 ...
               ]
             }
@@ -58,12 +58,12 @@ that feature in our inventory.
 
   + Headers
 
-            Location: https://api.packet.net/devices/1acd244d-5abe-4992-bb63-135a032a001f rel="self"
+            Location: /devices/1acd244d-5abe-4992-bb63-135a032a001f rel="self"
 
   + Body
 
             {
-              "href": "https://api.packet.net/devices/1acd244d-5abe-4992-bb63-135a032a001f"
+              "href": "/devices/1acd244d-5abe-4992-bb63-135a032a001f"
             }
 
 
@@ -127,11 +127,11 @@ A single device object.
                 { "address": "2604:1380::1", "address_family": 6, "public": true }
               ],
               "project": {
-                "href": "https://api.packet.net/projects/0a315aa2-4513-4780-9093-4d1af8400a7b"
+                "href": "/projects/0a315aa2-4513-4780-9093-4d1af8400a7b"
               },
               "created_at": "2014-04-14T02:15:15Z",
               "updated_at": "2014-04-15T02:15:15Z",
-              "href": "https://api.packet.net/devices/c8109e92-ae6c-4134-8fd9-8d86a702e7c3"
+              "href": "/devices/c8109e92-ae6c-4134-8fd9-8d86a702e7c3"
             }
 
 ### Retrieve a Device [GET]
@@ -305,7 +305,7 @@ Assign an IP address to a device. The IP address must be in one of the IP ranges
 
   + Headers
 
-            Location: https://api.packet.net/devices/8738dd01-7246-443a-95b8-c8c493bd2c9b/ips rel="self"
+            Location: /devices/8738dd01-7246-443a-95b8-c8c493bd2c9b/ips rel="self"
 
   + Body
 
