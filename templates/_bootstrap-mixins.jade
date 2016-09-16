@@ -176,6 +176,7 @@ mixin Paginate(resourceGroups, index)
             i.fa.fa-arrow-circle-left
             |  Previous
     .clearfix
+	br
     hr
 
 mixin Icon(method)
@@ -212,6 +213,7 @@ mixin Content(getButtonClass, multipage)
                 | Next&nbsp;
                 i.fa.fa-arrow-circle-right
             .clearfix
+			br
             hr
 
     each resourceGroup, index in api.resourceGroups
