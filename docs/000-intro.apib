@@ -1,11 +1,11 @@
 FORMAT: 1A
-HOST: 
+HOST:
 
 # Packet API Documentation
 
-Welcome to the heart and soul of Packet: our API, which allows you to interact with your devices, user account, and projects using conventional HTTP requests.  
+Welcome to the heart and soul of Packet: our API, which allows you to interact with your devices, user account, and projects using conventional HTTP requests.
 
-Whatever you can do via our portal, you can also do via our API.  
+Whatever you can do via our portal, you can also do via our API.
 
 All requests can be sent to the following endpoint:
 
@@ -26,7 +26,7 @@ Alternatively, if your client doesn't support setting headers (or if you're quic
 Most of the endpoints in the Packet API require authentication. Authenticating
 is done with an authentication token in the `X-Auth-Token` header.
 
-    curl -H 'X-Auth-Token: my_authentication_token' 
+    curl -H 'X-Auth-Token: my_authentication_token'
 
 Authentication tokens are used to identify the user your application is
 connecting to the Packet API on behalf of. Think of authentication tokens as
@@ -40,7 +40,7 @@ Users can create authentication tokens in the [Packet Portal](https://app.packet
 
 Generally speaking, the Packet API supports JSON (`application/json`) only.
 
-    curl -H 'Accept: application/json' 
+    curl -H 'Accept: application/json'
 
 Some routes may support other media types where appropriate.
 
@@ -172,3 +172,13 @@ We aim to provide api clients and libraries for most common languages and platfo
 [nodejs](https://github.com/packethost/packet-nodejs)
 
 [java](https://github.com/packethost/packet-java)
+
+# Group CLI Tools
+
+The tools below were created and maintained by fans of Packet and not directly supported by us.
+
+[https://github.com/t0mk/packet-python3-cli](https://github.com/t0mk/packet-python3-cli)
+
+[https://github.com/ebsarr/packet](https://github.com/ebsarr/packet)
+
+
