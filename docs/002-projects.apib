@@ -428,3 +428,66 @@ Returns a single IP reservation object.
 Remove an IP reservation from the project.
 
 + Response 204
+
+## SSH Keys [/projects/{id}/ssh-keys]
+A collection of ssh keys for a given project.
+
++ Parameters
+    + id (string) ... Project UUID
+
+### Retrieve all SSH Keys [GET]
+Returns a list of the given project ssh keys.
+
++ Response 200
+
+  + Body
+
+            {
+              "ssh_keys": [
+                {
+                  "id": "ded9047b-1872-467a-ab4a-ac042aafbbdc",
+                  "label": "My Key Label",
+                  "key": "ssh-rsa CACVB3NzaC1yc2EAAAADAQABAAABAQC...",
+                  "fingerprint": "74:f6:47:91:78:a2:c7:1e:ef:73:c9:b3:17:ab:ec:c9",
+                  "created_at": "2015-06-01T18:37:09Z",
+                  "updated_at": "2015-06-01T18:38:45Z",
+                  "owner": {
+                    "href": "/projects/9e0acc49-cfe3-4a07-b3b1-a8a3135a6571"
+                  },
+                  "href": "/ssh-keys/ded9047b-1872-467a-ab4a-ac042aafbbdc"
+                }
+              ]
+            }
+
+### Create a SSH Key [POST]
+Creates a new ssh key for the given project.
+
++ Request
+
+  + Body
+
+            {
+              "label":"My New SSH Key",
+              "key":"ssh-rsa BBBBC4a99Eklf7..."
+            }
+
++ Response 201
+
+    + Headers
+
+            Location: https://api.packet.net/ssh-keys/ded9047b-1872-467a-ab4a-ac042aafbbdc rel="self"
+
+    + Body
+
+            {
+              "id": "ded9047b-1872-467a-ab4a-ac042aafbbdc",
+              "label": "My New SSH Key",
+              "key": "ssh-rsa BBBBC4a99Eklf7...",
+              "fingerprint": "74:f6:47:91:78:a2:c7:1e:ef:73:c9:b3:17:ab:ec:c9",
+              "created_at": "2015-06-01T18:37:09Z",
+              "updated_at": "2015-06-01T18:38:45Z",
+              "owner": {
+                "href": "/projectss/9e0acc49-cfe3-4a07-b3b1-a8a3135a6571"
+              },
+              "href": "/ssh-keys/ded9047b-1872-467a-ab4a-ac042aafbbdc"
+            }
