@@ -74,9 +74,11 @@ A single device object.
         + hostname (string)
         + plan (enum[string])
             + Members
-                + baremetal_0 - Type 0
-                + baremetal_1 - Type 1
-                + baremetal_3 - Type 3
+                + baremetal_0  - Type 0
+                + baremetal_1  - Type 1
+                + baremetal_2  - Type 2
+                + baremetal_2a - Type 2A
+                + baremetal_3  - Type 3
         + billing_cycle (enum[string])
             + Members
                 + hourly
@@ -87,13 +89,17 @@ A single device object.
         See `/operating-systems` endpoint for information about available operating systems.
             + Members
                 + centos_7 - CentOS 7
-                + centos_6 - CentOS 6
                 + coreos_stable - CoreOS (stable)
                 + coreos_beta - CoreOS (beta)
                 + coreos_alpha - CoreOS (alpha)
-                + debian_8 - Debian 8
                 + debian_7 - Debian 7
+                + debian_8 - Debian 8
+                + freebsd_10_3 - FreeBSD 10.3
+                + rancher - RancherOS
+                + scientific_6 - Scientific Linux
                 + ubuntu_14_04 - Ubuntu 14.04 LTS
+                + ubuntu_16_04 - Ubuntu 16.04 LTS
+                + windows_2012_rc2 - Windows 2012 RC2
         + locked (boolean, optional) - Set locked status
             + Default: false
         + userdata (string, optional) - Userdata you want to process during provision
